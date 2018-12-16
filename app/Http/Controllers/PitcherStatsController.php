@@ -133,7 +133,7 @@ class PitcherStatsController extends Controller
     public function indexToPitcher()
     {   
         //$pitcher_stats = Pitcher_stat::all();
-        $strikeouts_values = Pitcher_stat::orderBy('strikeout', 'desc')->limit(10)->select('strikeout')->get()->toArray();
+        /*$strikeouts_values = Pitcher_stat::orderBy('strikeout', 'desc')->limit(10)->select('strikeout')->get()->toArray();
         $strikeouts_names_values = Pitcher_stat::orderBy('strikeout', 'desc')->limit(10)->select('name')->get()->toArray();
         
         $eras_values = Pitcher_stat::orderBy('era', 'asc')->limit(10)->select('era')->get()->toArray();
@@ -153,8 +153,8 @@ class PitcherStatsController extends Controller
             'strikeouts_names' => $strikeouts_names,
             'eras' => $eras,
             'eras_names' => $eras_names,
-        ];
+        ];*/
         
-        return view('carp.pitchers', $data);
+        return view('carp.pitchers'/*, $data*/);
     }
 }

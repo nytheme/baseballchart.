@@ -86,7 +86,7 @@
       </div><!--.row-->
     </div><!--.container-->
       
-    <div class="container barChart z-depth-1"> 
+    <!--<div class="container barChart z-depth-1"> 
       <div class="row">
         <div class="col s12 m12">
           <h4>防御率 TOP10</h4>
@@ -98,9 +98,9 @@
           <div id="barChart_era_sp"></div>
         </div>
       </div><!--.row-->
-    </div><!--.container-->
+    <!--</div><!--.container-->
         
-    <div class="container section_sp"> 
+    <!--<div class="container section_sp"> 
       <div class="row">    
         <div class="col s12 m6 table_sp">
           <table>
@@ -110,7 +110,7 @@
             <tr><td><img src="images/crown3.png" class="crown_sp">大瀬良 大地</td><td>広島</td><td>2.62</td></tr>
           </table>
         </div><!--.col s12-->  
-        <div class="col s12 m6 table_sp">
+        <!--<div class="col s12 m6 table_sp">
           <table>
             <tr><th colspan="3">パリーグ 防御率ランキング（先発投手）</th></tr>
             <tr><td><img src="images/crown1.png" class="crown_sp">岸 孝之</td><td>楽天</td><td>2.72</td></tr>
@@ -118,8 +118,8 @@
             <tr><td><img src="images/crown3.png" class="crown_sp">上沢 直之</td><td>日本ハム</td><td>3.16</td></tr>
           </table>
         </div><!--.col s12-->
-      </div><!--.row-->
-    </div><!--.container-->
+      <!--</div><!--.row-->
+    <!--</div><!--.container-->
       
       
       <div class="container raderChart z-depth-1"> 
@@ -199,7 +199,7 @@
         xAxis : [
             {
                 type : 'category',
-                data : ['<?php print_r($strikeouts_names[0]); ?>','<?php print_r($strikeouts_names[1]); ?>','<?php print_r($strikeouts_names[2]); ?>','<?php print_r($strikeouts_names[3]); ?>','<?php print_r($strikeouts_names[4]); ?>','<?php print_r($strikeouts_names[5]); ?>','<?php print_r($strikeouts_names[6]); ?>','<?php print_r($strikeouts_names[7]); ?>','<?php print_r($strikeouts_names[8]); ?>','<?php print_r($strikeouts_names[9]); ?>',],
+                data : ['大瀬良','岡田','ジョンソン','九里','フランスア','一岡','野村','中崎','今村','アドゥワ',],
                 axisTick: {
                     alignWithLabel: true
                 },
@@ -220,7 +220,7 @@
                 name:'奪三振',
                 type:'bar',
                 barWidth: '50%',
-                data:['<?php print_r($strikeouts[0]); ?>','<?php print_r($strikeouts[1]); ?>','<?php print_r($strikeouts[2]); ?>','<?php print_r($strikeouts[3]); ?>','<?php print_r($strikeouts[4]); ?>','<?php print_r($strikeouts[5]); ?>','<?php print_r($strikeouts[6]); ?>','<?php print_r($strikeouts[7]); ?>','<?php print_r($strikeouts[8]); ?>','<?php print_r($strikeouts[9]); ?>',],
+                data:[200,180,170,160,150,140,131,120,111,100],
                 label: {
                         normal: {
                             show: true,
@@ -275,7 +275,7 @@
         },
         yAxis: {
             type: 'category',
-            data: ['<?php print_r($strikeouts_names[9]); ?>','<?php print_r($strikeouts_names[8]); ?>','<?php print_r($strikeouts_names[7]); ?>','<?php print_r($strikeouts_names[6]); ?>','<?php print_r($strikeouts_names[5]); ?>','<?php print_r($strikeouts_names[4]); ?>','<?php print_r($strikeouts_names[3]); ?>','<?php print_r($strikeouts_names[2]); ?>','<?php print_r($strikeouts_names[1]); ?>','<?php print_r($strikeouts_names[0]); ?>',]
+            data: ['アドゥワ','今村','中崎','野村','一岡','フランスア','九里','ジョンソン','岡田','大瀬良',]
         },
         series: [
             {
@@ -301,151 +301,14 @@
                         }
                       }
                 },
-                data: ['<?php print_r($strikeouts[9]); ?>','<?php print_r($strikeouts[8]); ?>','<?php print_r($strikeouts[7]); ?>','<?php print_r($strikeouts[6]); ?>','<?php print_r($strikeouts[5]); ?>','<?php print_r($strikeouts[4]); ?>','<?php print_r($strikeouts[3]); ?>','<?php print_r($strikeouts[2]); ?>','<?php print_r($strikeouts[1]); ?>','<?php print_r($strikeouts[0]); ?>',]
+                data: [100,110,120,130,140,150,160,170,180,190,]
             },
            
         ]
     };
       barChart_hr_sp.setOption(option);
       
-      var barChart_era = echarts.init(document.getElementById('barChart_era'));
-      var era = ['<?php print_r($eras[0]); ?>','<?php print_r($eras[1]); ?>','<?php print_r($eras[2]); ?>','<?php print_r($eras[3]); ?>','<?php print_r($eras[4]); ?>','<?php print_r($eras[5]); ?>','<?php print_r($eras[6]); ?>','<?php print_r($eras[7]); ?>','<?php print_r($eras[8]); ?>','<?php print_r($eras[9]); ?>',]
-      var option = {
-
-        color: ['#00bcd4'],
-        tooltip : {
-            show: false,
-            trigger: 'axis',
-            axisPointer : {            
-                type : 'shadow'        
-            }
-        },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        xAxis : [
-            {
-                type : 'category',
-                data : ['<?php print_r($eras_names[0]); ?>','<?php print_r($eras_names[1]); ?>','<?php print_r($eras_names[2]); ?>','<?php print_r($eras_names[3]); ?>','<?php print_r($eras_names[4]); ?>','<?php print_r($eras_names[5]); ?>','<?php print_r($eras_names[6]); ?>','<?php print_r($eras_names[7]); ?>','<?php print_r($eras_names[8]); ?>','<?php print_r($eras_names[9]); ?>',],
-                axisTick: {
-                    alignWithLabel: true
-                },
-                axisLabel: {
-                  rotate: 20,
-                  fontSize: 12,
-                  fontWeight: 400,
-                }
-            }
-        ],
-        yAxis : [
-            {
-                type : 'value',
-                axisLabel: {
-                  show: false,
-                }
-            }
-        ],
-        series : [
-            {
-                name:'防御率',
-                type:'bar',
-                barWidth: '50%',
-                data:[10-'<?php print_r($eras[0]); ?>',10-'<?php print_r($eras[1]); ?>',10-'<?php print_r($eras[2]); ?>',10-'<?php print_r($eras[3]); ?>',10-'<?php print_r($eras[4]); ?>',10-'<?php print_r($eras[5]); ?>',10-'<?php print_r($eras[6]); ?>',10-'<?php print_r($eras[7]); ?>',10-'<?php print_r($eras[8]); ?>',10-'<?php print_r($eras[9]); ?>',],
-                label: {
-                        normal: {
-                            show: true,
-                            position: 'insideTop',
-                            formatter: function(data) {
-                                return era[data.dataIndex];
-                            },
-                        }
-                    },
-                itemStyle: {
-                      normal: {
-                          color: new echarts.graphic.LinearGradient(
-                            0, 0, 0, 1, [{
-                                    offset: 0,
-                                    color: '#E0402A'
-                                },
-                                {
-                                    offset: 0.5,
-                                    color: '#D4382D'
-                                },
-                                {
-                                    offset: 1,
-                                    color: '#A12B22'
-                                }
-                            ]
-                        )//color
-                      }
-                },
-            }
-        ]
-    };
-      barChart_era.setOption(option);
-      
-      var barChart_era_sp = echarts.init(document.getElementById('barChart_era_sp'));
-      var era = ['<?php print_r($eras[9]); ?>','<?php print_r($eras[8]); ?>','<?php print_r($eras[7]); ?>','<?php print_r($eras[6]); ?>','<?php print_r($eras[5]); ?>','<?php print_r($eras[4]); ?>','<?php print_r($eras[3]); ?>','<?php print_r($eras[2]); ?>','<?php print_r($eras[1]); ?>','<?php print_r($eras[0]); ?>',]
-      var option = {
-
-        tooltip : {
-            show: false,
-            trigger: 'axis',
-            axisPointer : {            
-                type : 'shadow'        
-            }
-        },
-        legend: {
-            data: ['']
-        },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        xAxis:  {
-            type: 'value'
-        },
-        yAxis: {
-            type: 'category',
-            data: ['<?php print_r($eras_names[9]); ?>','<?php print_r($eras_names[8]); ?>','<?php print_r($eras_names[7]); ?>','<?php print_r($eras_names[6]); ?>','<?php print_r($eras_names[5]); ?>','<?php print_r($eras_names[4]); ?>','<?php print_r($eras_names[3]); ?>','<?php print_r($eras_names[2]); ?>','<?php print_r($eras_names[1]); ?>','<?php print_r($eras_names[0]); ?>',]
-        },
-        series: [
-            {
-                name: '',
-                type: 'bar',
-                stack: '',
-                label: {
-                    normal: {
-                        show: true,
-                        position: 'insideRight',
-                        formatter: function(data) {
-                            return era[data.dataIndex];
-                        },
-                    }
-                },
-                itemStyle: {
-                      normal: {
-                        color: {
-                          colorStops: [{
-                          offset: 0,
-                          color: '#c6342a' // 0% 
-                          }, {
-                              offset: 1,
-                              color: '#E5422B' // 100% 
-                          }],
-                        }
-                      }
-                },
-                data: [10-'<?php print_r($eras[9]); ?>',10-'<?php print_r($eras[8]); ?>',10-'<?php print_r($eras[7]); ?>',10-'<?php print_r($eras[6]); ?>',10-'<?php print_r($eras[5]); ?>',10-'<?php print_r($eras[4]); ?>',10-'<?php print_r($eras[3]); ?>',10-'<?php print_r($eras[2]); ?>',10-'<?php print_r($eras[1]); ?>',10-'<?php print_r($eras[0]); ?>',]
-            },
-        ]
-    };
-      barChart_era_sp.setOption(option);
+ 
       
       var raderChart_team_ave = echarts.init(document.getElementById('raderChart_team_ave'));
       var lineStyle = {
