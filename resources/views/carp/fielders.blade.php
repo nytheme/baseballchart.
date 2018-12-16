@@ -184,7 +184,113 @@
       </div>
     </footer>
     <script>
-      var barChart_hr = echarts.init(document.getElementById('barChart_hr'));
+          var barChart_hr = echarts.init(document.getElementById('barChart_hr'));
+      var option = {
+
+        color: ['#00bcd4'],
+        tooltip : {
+            trigger: 'axis',
+            axisPointer : {            
+                type : 'shadow'        
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis : [
+            {
+                type : 'category',
+                data : ['丸 佳浩', '鈴木 誠也', 'バティスタ', '菊池 涼介', '會澤', '松山 竜平', '田中 広輔', '西川 龍馬', '野間 峻祥', '安部 友裕'],
+                axisTick: {
+                    alignWithLabel: true
+                },
+                /*axisLabel: {
+                  rotate: 20,
+                  fontSize: 12,
+                  fontWeight: 400,
+                }*/
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        series : [
+            {
+                name:'ホームラン',
+                type:'bar',
+                barWidth: '50%',
+                data:[39, 30, 25, 13, 13, 12, 10, 6, 5, 4],
+                label: {
+                        normal: {
+                            show: true,
+                            position: 'insideTop'
+                        }
+                    },
+                itemStyle: {
+                      normal: {
+                          color: '#c6342a'
+                        
+                      }
+                },
+            }
+        ]
+    };
+      barChart_hr.setOption(option);
+      
+      var barChart_hr_sp = echarts.init(document.getElementById('barChart_hr_sp'));
+      var option = {
+
+        tooltip : {
+            trigger: 'axis',
+            axisPointer : {            
+                type : 'shadow'        
+            }
+        },
+        legend: {
+            data: ['']
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis:  {
+            type: 'value'
+        },
+        yAxis: {
+            type: 'category',
+            data: ['野間 峻祥','田中 広輔','松山 竜平','菊池 涼介','鈴木 誠也','丸 佳浩']
+        },
+        series: [
+            {
+                name: '',
+                type: 'bar',
+                stack: '',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'insideRight'
+                    }
+                },
+                itemStyle: {
+                      normal: {
+                          color: '#c6342a'
+                        
+                      }
+                },
+                data: [5, 10, 12, 13, 30, 39]
+            },
+           
+        ]
+    };
+      barChart_hr_sp.setOption(option);
+      /*var barChart_hr = echarts.init(document.getElementById('barChart_hr'));
       var option = {
 
         color: ['#00bcd4'],
@@ -311,7 +417,7 @@
             },
         ]
     };
-      barChart_hr_sp.setOption(option);
+      barChart_hr_sp.setOption(option);*/
       
       var raderChart_team_ave = echarts.init(document.getElementById('raderChart_team_ave'));
       var lineStyle = {
