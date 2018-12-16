@@ -79,16 +79,16 @@ class StatisticsController extends Controller
         $hrs = array_column( $hrs_values, 'hr' );
         $hrs_names_space = array_column( $hrs_names_values, 'name' );
         $hrs_names = str_replace("　", " ", $hrs_names_space); //スペースを半角に
-        //$first = $hrs[0] -> hr; //配列の一つだけを取り出したい場合
+        //$first = $hrs[0] -> hr; //配列の一つだけを取り出したい場合*/
         
         $data = [
             'statistics' => $statistics,
-            'hrs' => $hrs,
+            /*'hrs' => $hrs,
             'hrs_names' => $hrs_names,
-            //'first' => $first
+            //'first' => $first*/
             
-        ];*/
+        ];
         
-        return view('carp.fielders'/*, $data*/);
+        return view('carp.fielders', $data);
     }
 }
