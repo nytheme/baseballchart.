@@ -137,6 +137,7 @@
       <footer class="footer_text footer_pc">
         <div class="container">
           <ul>
+            <li><span class="pointer">{!! link_to_route('home', 'ホーム') !!}</span></li>
             <li><span class="pointer">このサイトについて</span></li>
             <li><span class="pointer">プライバシーポリシー</span></li>
             <li><span class="pointer">お問い合わせ</span></li>

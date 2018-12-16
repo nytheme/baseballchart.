@@ -13,12 +13,12 @@
             </div>
             <div class="header_menu_pc">
               <ul>
-                <li>{!! link_to_route('carp.list', '選手一覧') !!}</li>
-                <li>{!! link_to_route('carp.pitchers', '投手成績') !!}</li>
-                <li>{!! link_to_route('carp.fielders', '打者成績') !!}</li>
-                <li>{!! link_to_route('carp.create', '選手登録') !!}</li>
+                <li><span class="pointer">{!! link_to_route('carp.list', '選手一覧') !!}</span></li>
+                <li><span class="pointer">{!! link_to_route('carp.pitchers', '投手成績') !!}</span></li>
+                <li><span class="pointer">{!! link_to_route('carp.fielders', '打者成績') !!}</span></li>
+                {{--<li>{!! link_to_route('carp.create', '選手登録') !!}</li>
                 <li>{!! link_to_route('carp.create_stats', '打者成績登録') !!}</li>
-                <li>{!! link_to_route('carp.create_p_stats', '投手成績登録') !!}</li>
+                <li>{!! link_to_route('carp.create_p_stats', '投手成績登録') !!}</li>--}}
               </ul>
             </div>
               <a data-target="slide-out" class="waves-effect waves-light sidenav-trigger btn-floating btn-large red darken-3 menu_btn"><i class="material-icons">menu</i></a>
