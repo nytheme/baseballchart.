@@ -72,7 +72,7 @@ class StatisticsController extends Controller
     }
     public function indexToFielder()
     {   
-        $statistics = Statistic::all();
+        /*$statistics = Statistic::all();
         $hrs_values = Statistic::orderBy('hr', 'desc')->limit(10)->select('hr')->get()->toArray();
         $hrs_names_values = Statistic::orderBy('hr', 'desc')->limit(10)->select('name')->get()->toArray();
         
@@ -87,7 +87,7 @@ class StatisticsController extends Controller
             'hrs_names' => $hrs_names,
             //'first' => $first
             
-        ];
+        ];*/
         
         return view('carp.fielders', $data);
     }
