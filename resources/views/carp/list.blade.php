@@ -166,13 +166,13 @@
                   @endif
                 @endforeach
               </table>
-              <table>
+              {{--<table>
                 <tr><th colspan="2">全選手</th></tr>
                 <tr><th>id</th><th>Name</th><tr>
                   @foreach ($players as $player)
                     <tr><th>{{ $player->id }}</th><td>{{ $player->name }}</td></tr>
                   @endforeach
-              </table>
+              </table>--}}
             @endif
           </div><!--.table_pc-->
           
