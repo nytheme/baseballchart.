@@ -89,6 +89,6 @@ class StatisticsController extends Controller
             
         ];*/
         
-        return view('carp.fielders', $data);
+        return view('carp.fielders'/*, $data*/);
     }
 }
