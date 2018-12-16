@@ -1,0 +1,243 @@
+@charset "UTF-8";
+body {
+  font-family: -apple-system, system-ui, "Helvetica Neue", YuGothic, "Yu Gothic", Verdana, Meiryo, sans-serif; }
+
+body {
+  width: 100%;
+  background-size: cover;
+  background-color: #f1f1f1; }
+
+h2 {
+  font-size: 2em;
+  font-weight: 700; }
+
+h3 {
+  font-size: 1.5em;
+  font-weight: 700; }
+  
+.top{
+  background-color: #fdfdfd;
+}
+
+header {
+  padding-top: 14px;
+  border-top: solid red 4px; }
+  header .header {
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between; }
+  header .logo {
+    width: 200px; }
+  header li {
+    display: inline;
+    padding-left: 2em;
+    font-weight: 600;}
+
+@media (min-width: 550px) {
+  .menu_btn {
+    display: none; } }
+@media (max-width: 550px) {
+  .menu_btn02 {
+    display: none; } }
+.list p {
+  display: inline; }
+.list h3 {
+  border-bottom: solid 2px #d23228; }
+  .list h3 img {
+    width: 5%;
+    margin-right: 22px; }
+@media (max-width: 550px) {
+  .list h3 img {
+    width: 10%; } }
+@media (min-width: 550px) {
+  .table_sp {
+    display: none; } }
+@media (max-width: 550px) {
+  .table_pc {
+    display: none; } }
+.teams .carp {
+  border: solid 2px #d23228;
+  border-radius: 10px;
+  margin-top: 20px; }
+  .teams .carp img {
+    width: 15%;
+    margin-right: 22px; }
+.teams img {
+  width: 40%;
+  margin-right: 22px; }
+
+.table_pc, .table_sp {
+  background-color: #fdfdfd;
+  border: solid 1px #f1f1f1;
+  border-radius: 10px; }
+
+img.crown_pc {
+  width: 20px;
+  vertical-align: bottom;
+  margin-right: 0; }
+
+img.crown_sp {
+  width: 20px;
+  vertical-align: bottom;
+  margin-right: 10px; }
+
+.barChart {
+  border: solid #f1f1f1 2px;
+  border-radius: 10px; }
+
+#barChart_hr {
+  max-width: 100%;
+  height: 300px; }
+
+#barChart_hr_sp {
+  width: 300px;
+  height: 300px; }
+
+#raderChart_team_ave {
+  width: 370px;
+  height: 400px; }
+
+.comparison {
+  border: solid #f1f1f1 2px;
+  border-radius: 10px; }
+
+@media (max-width: 550px) {
+  #barChart_hr {
+    display: none; }
+
+  .header_menu_pc {
+    display: none; } }
+@media (min-width: 550px) {
+  #barChart_hr_sp {
+    display: none; }
+
+  .header_menu_sp {
+    display: none; } }
+.fielder h3 {
+  border: solid 2px #d23228;
+  border-radius: 10px; }
+  .fielder h3 img {
+    width: 10%;
+    margin-right: 22px; }
+.fielder .stats_rader {
+  max-width: 100%;
+  background-color: rgba(253, 253, 253, 0.7);
+  border: solid 2px #f1f1f1; }
+  .fielder .stats_rader th, .fielder .stats_rader td {
+    padding-top: 1%;
+    padding-bottom: 1%; }
+  .fielder .stats_rader .tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer; }
+
+#rader {
+  width: 400px;
+  height: 460px; }
+
+table.info {
+  max-width: 100%; }
+
+table.stats {
+  max-width: 100%; }
+
+@media (max-width: 550px) {
+  table.info {
+    display: none; }
+
+  table.stats {
+    display: none; } }
+@media (min-width: 550px) {
+  .stats_rader {
+    display: none; } }
+.team_name {
+  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px; }
+
+.title_carp img {
+  max-width: 40px; }
+.title_carp img, .title_carp h2 {
+  display: inline; }
+
+.batter_stats {
+  border-bottom: 4px solid #d23228; }
+
+#barChart_01 {
+  width: 300px;
+  height: 300px; }
+
+.barChart_01 {
+  margin-right: 20px; }
+
+#barChart_02 {
+  width: 300px;
+  height: 300px; }
+
+.pitcher_stats {
+  border-bottom: 4px solid #d23228; }
+
+.buttons {
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center; }
+  .buttons li {
+    display: inline;
+    padding-left: 2em; }
+
+footer {
+  padding-top: 20px;
+  background-color: #fdfdfd;
+  border-bottom: solid red 4px; }
+  footer ul {
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center; }
+    footer ul li {
+      font-weight: 600;
+      display: inline;
+      padding-bottom: 20px; }
+    footer ul li:after {
+      content: '　|　'; }
+    footer ul li:last-child:after {
+      content: ''; }
+  footer .copyright {
+    text-align: center;
+    font-size: 90%; }
+
+@media (min-width: 550px) {
+  .footer_sp {
+    display: none; } }
+@media (max-width: 550px) {
+  .footer_pc {
+    display: none; } }
+.footer_sp {
+  text-align: center;
+  font-weight: 600; }
+  .footer_sp p {
+    font-size: 1.2em;
+    padding-bottom: 1em; }
+  .footer_sp div {
+    font-size: 1.1em; }
+
+.pointer {
+  position: relative;
+  display: inline-block;
+  text-decoration: none; }
+  .pointer::after {
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: #d23228;
+    transform: scale(0, 1);
+    transform-origin: center top;
+    transition: transform .3s; }
+  .pointer:hover::after {
+    transform: scale(1, 1); }
+
+.pointer:hover {
+  cursor: pointer; }
+
+/*# sourceMappingURL=main.css.map */
