@@ -140,13 +140,13 @@
             <li><span class="pointer">このサイトについて</span></li>
             <li><span class="pointer">プライバシーポリシー</span></li>
             <li><span class="pointer">お問い合わせ</span></li>
-            @if (Auth::check())
+            {{--@if (Auth::check())
             @else
             <li>{!! link_to_route('login', '管理者ログイン') !!}</li>
             @endif
             @if (Auth::check())
             <li>{!! link_to_route('logout.get', 'ログアウト') !!}</li>
-            @endif
+            @endif--}}
           </ul>
         </div>  
         <div class="footer-copyright">
