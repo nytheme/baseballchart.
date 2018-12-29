@@ -114,6 +114,7 @@
         
       </div><!--.row-->
     </div><!--.container-->
+    {!! link_to_route('carp.create', '選手登録') !!}
     @if (Auth::check())
         {!! link_to_route('carp.create', '選手登録') !!}
         {!! link_to_route('logout.get', 'ログアウト') !!}
