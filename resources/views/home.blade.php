@@ -120,7 +120,7 @@
         {!! link_to_route('logout.get', 'ログアウト') !!}
     @else
         {!! link_to_route('signup.get', '新規登録', null) !!}
-        <a href="login">管理者ログイン</a>
+        <a href="login">ログイン</a>
     @endif
     <script>
       //ホームラン
