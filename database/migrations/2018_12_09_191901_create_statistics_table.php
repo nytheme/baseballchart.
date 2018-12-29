@@ -15,12 +15,25 @@ class CreateStatisticsTable extends Migration
     {
         Schema::create('statistics', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('player_id')->unsigned()->index();
+            $table->integer('team');
+            $table->integer('season');
+            $table->integer('number');
             $table->string('name');
             $table->string('kana');
-            $table->integer('position');
-            $table->integer('number');
-            $table->integer('year');
+            $table->date('dob');
+            $table->integer('old');
+            $table->integer('join');
+            $table->integer('years');
+            $table->integer('height');
+            $table->integer('weight');
+            $table->string('p');
+            $table->string('b');
+            $table->string('position');
+            $table->string('home');
+            $table->string('blood');
+            $table->integer('salary');
+            $table->string('career')->nullable();
+            $table->string('draft')->nullable();
             $table->string('team_id');
             $table->integer('siai_s');
             $table->integer('dasek_s');
@@ -41,13 +54,14 @@ class CreateStatisticsTable extends Migration
             $table->integer('hbp');
             $table->integer('s_out');
             $table->integer('d_play');
-            $table->float('da_ave');
-            $table->float('o_b_ave');
-            $table->float('sl_ave');
-            $table->float('ops');
-            $table->integer('salary');
-            $table->integer('old');
-            $table->integer('weight');
+            $table->double('da_ave');
+            $table->double('o_b_ave');
+            $table->double('sl_ave');
+            $table->double('ops');
+            $table->double('hr_ave');
+            $table->double('s_out_ave');
+            $table->double('walk_ave');
+            
             $table->timestamps();
         });
     }

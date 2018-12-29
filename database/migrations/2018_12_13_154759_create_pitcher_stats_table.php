@@ -15,16 +15,26 @@ class CreatePitcherStatsTable extends Migration
     {
         Schema::create('pitcher_stats', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('player_id')->unsigned()->index();
+            $table->integer('team');
+            $table->integer('season');
+            $table->integer('number');
             $table->string('name');
             $table->string('kana');
-            $table->integer('position');
-            $table->integer('number');
-            $table->integer('year');
-            $table->integer('team_id');
-            $table->integer('salary');
+            $table->date('dob');
             $table->integer('old');
+            $table->integer('join');
+            $table->integer('years');
+            $table->integer('height');
             $table->integer('weight');
+            $table->string('p');
+            $table->string('b');
+            $table->string('position');
+            $table->string('home');
+            $table->string('blood');
+            $table->integer('salary');
+            $table->string('career')->nullable();
+            $table->string('draft')->nullable();
+            $table->string('team_id');
             $table->integer('siai_s');
             $table->integer('win');
             $table->integer('loss');
@@ -34,9 +44,9 @@ class CreatePitcherStatsTable extends Migration
             $table->integer('p_comp');
             $table->integer('shutout');
             $table->integer('nowalk');
-            $table->float('r_win');
+            $table->double('r_win');
             $table->integer('batters');
-            $table->float('inning');
+            $table->double('inning');
             $table->integer('hit_allowed');
             $table->integer('hr_allowed');
             $table->integer('give_walk');
@@ -47,9 +57,13 @@ class CreatePitcherStatsTable extends Migration
             $table->integer('balk');
             $table->integer('run_allowed');
             $table->integer('earned_run');
-            $table->float('era');
-            $table->float('whip');
-            $table->float('qs');
+            $table->double('era');
+            $table->double('whip');
+            $table->double('hit_allowed_ave');
+            $table->double('hr_allowed_ave');
+            $table->double('strikeout_ave');
+            $table->double('give_ave');
+            $table->double('qs');
             $table->timestamps();
         });
     }

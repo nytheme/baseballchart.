@@ -3,313 +3,274 @@
 @section('content')
 <link rel="stylesheet" href="{{ secure_asset('css/carp/list.css') }}"> 
   <body>
-    <section class="top z-depth-1">
-    <header class="z-depth-0">
+    <section class="top z-depth-1 to_slide">
+    <header>
       <div class="container">
         <div class="row">
           <div class="col s12 m12 header">
             <div>
-              <a href="{{URL::to('home')}}"><img src="images/logo.png" class="logo"></a>
+             <a href="{{URL::to('home')}}"><img src="images/logo.png" class="logo"></a>
             </div>
             <div class="header_menu_pc">
               <ul>
-                <li><span class="pointer">{!! link_to_route('carp.list', '選手一覧') !!}</span></li>
-                <li><span class="pointer">{!! link_to_route('carp.pitchers', '投手成績') !!}</span></li>
-                <li><span class="pointer">{!! link_to_route('carp.fielders', '打者成績') !!}</span></li>
-                {{--<li>{!! link_to_route('carp.create', '選手登録') !!}</li>
-                <li>{!! link_to_route('carp.create_stats', '打者成績登録') !!}</li>
-                <li>{!! link_to_route('carp.create_p_stats', '投手成績登録') !!}</li>--}}
+                <li><span class="pointer"><a href="carp.list?season=2018">選手一覧</a></span></li>
+                <li><span class="pointer"><a href="carp.pitchers?season=2018">投手成績</a></span></li>
+                <li><span class="pointer"><a href="carp.fielders?season=2018">打者成績</a></span></li>
+                @if (Auth::check())
+                <li>{!! link_to_route('carp.create', '選手登録') !!}</li>
+                @endif
               </ul>
             </div>
-              <a data-target="slide-out" class="waves-effect waves-light sidenav-trigger btn-floating btn-large red darken-3 menu_btn"><i class="material-icons">menu</i></a>
-            
+            <div class="header_menu_sp">
+              <a class="waves-effect waves-light slide-trigger btn-floating btn red darken-3 btnOpen"><i class="material-icons">menu</i></a>
+              <a class="waves-effect waves-light slide-trigger btn-floating btn red darken-3 btnClose close"><i class="material-icons">close</i></a>
+            </div>
           </div>  
         </div>
       </div>
+      <div class="col s12 m6">
+        <ul class="slideToggle">
+          <h4>- MENU -</h4>
+          <h3 class="h3"><a href="carp.list?season=2018">選手一覧</a></h3>
+          <hr>
+          <h3 class="h3"><a href="carp.pitchers?season=2018">投手成績</a></h3>
+          <hr>
+          <h3 class="h3"><a href="carp.fielders?season=2018">打者成績</a></h3>
+          <hr>
+        </ul>
+      </div>
     </header>
-    <div class="container">
-      <div class="row">
-        
+      <div class="container">
+        <div class="row">
           <div class="list">
-            
             <div class="col s12">
               <h3><img src="images/carp_logo.png">広島東洋カープ 選手一覧</h3>
             </div>
-            
-            <div class="input-field col s12 m6">
-              <select>
-                <optgroup label="Season">
-                  <option value="1">2018</option>
-                </optgroup>
-                <!--<optgroup label="Other">
-                  <option value="4">Legends</option>
-                </optgroup>-->
-              </select>
-              <label>Season</label>
-            </div><!--.input-field-->
-            
-            <div class="input-field col s12 m6">
-              <select>
-                <optgroup label="List">
-                  <option value="1">全選手</option>
-                </optgroup>
-              </select>
-              <label>List</label>
-            </div>
-            </div>
-            </div>
-            </div>
-      </section>
-            
-      <section class="center">
-
+            <div class="col s12 m6 selector">
+              
+              @foreach ($pitcher_stats as $pitcher_stat)
+                <!-- Dropdown Structure -->
+                <div class="z-depth-1">
+                  <ul class="select z-depth-1">
+                    <div class="box_close">
+                      <div><h6>Season</h6></div>
+                      <i class="material-icons trigger select_close_btn">close</i>
+                    </div>
+                    <li><a href="carp.list?season=2018">2018年</a></li>
+                    <li><a href="carp.list?season=2017">2017年</a></li>
+                  </ul>
+                </div>
+                <p class="label">Season</p><br>
+                <div class="trigger box">
+                  <div>
+                    <p style="font-size: 1.2em;" >{{ $pitcher_stat->season }}年</p>
+                  </div>
+                  <div>
+                    <i class="material-icons">arrow_drop_down</i>
+                  </div>
+                </div>
+                <?php break; ?>
+              @endforeach
+              <hr>
+            </div><!--.selector-->
+            <div class="col s12 m6 selector">
+              <!-- Dropdown Structure -->
+              <div class="z-depth-1">
+                <ul class="select z-depth-1">
+                  <div class="box_close">
+                    <div><h6>Position</h6></div>
+                    <i class="material-icons trigger select_close_btn">close</i>
+                  </div>
+                  <li><a href="#" class="all trigger">全選手</a></li>
+                  <li><a href="#" class="pitcher trigger">投手</a></li>
+                  <li><a href="#" class="inFielder trigger">内野手</a></li>
+                  <li><a href="#" class="outFielder trigger">外野手</a></li>
+                  <li><a href="#" class="catcher trigger">捕手</a></li>
+                </ul>
+              </div>
+              <p class="label">Position</p><br>
+              <div class="trigger box">
+                <div>
+                  <p style="font-size: 1.2em;" id="selected">全選手</p>
+                </div>
+                <div>
+                  <i class="material-icons">arrow_drop_down</i>
+                </div>
+              </div>
+              <hr>
+            </div><!--.selector-->
+          </div><!--.list-->
+        </div><!--.row-->
+      </div><!--.container-->
+    </section><!--.top-->
+    <section class="center">
       <div class="container">
         <div class="row">
-            <div class="table_pc col s12 z-depth-1">
-          
-            @if (count($players) > 0)
-              <table>
-                <tr><th colspan="11">投手</th></tr>
-                <tr><th>No.</th><th>Name</th><th>DOB</th><th>Age</th><th>Years</th><th>Height</th><th>Weight</th><th>Blood</th><th>P/B</th><th>Home</th><th>Salary</th></tr>
-                @foreach ($players as $player)
-                  @if ($player->position == 1 || $player->position == 5 )
-                    @foreach ($player->pitcher_stats as $pitcher_stat)
+          <div class="table_pc col s12 z-depth-1">
+            @if (count($pitcher_stats) > 0)
+            <table class="pitcherTable">
+              <tr><th colspan="11">投手</th></tr>
+              <tr><th>No.</th><th>Name</th><th>DOB</th><th>Age</th><th>Years</th><th>Height</th><th>Weight</th><th>Blood</th><th>P/B</th><th>Home</th><th>Salary</th></tr>
+              @foreach ($pitcher_stats as $pitcher_stat)　
+                  @if ($pitcher_stat->position == "先発" || $pitcher_stat->position == "リリーフ")
                       @php
-                        //全角スペースを半角スペースに
-                          $name = str_replace("　", " ", $player->name);
-                          
-                        //年齢を生年月日から算出
-                          $now = date("Ymd");
-                          $born = str_replace("-", "", $player->dob);
-                          
-                        //生年月日の-を/に変更
-                          $dob = str_replace("-", "/", $player->dob);
-                          
-                        //年数を入団年から算出
-                          $nowYear = date('Y');
-                          $years = $nowYear - $player->join;
-                        
-                        //年棒にカンマ
+                          $name = str_replace("　", " ", $pitcher_stat->name);
+                          $dob = str_replace("-", "/", $pitcher_stat->dob);
                           $salary = number_format($pitcher_stat->salary);
                       @endphp
-                    <tr><td>{{ $pitcher_stat->number }}</td><td><?php echo $name; ?></td><td><?php echo $dob; ?></td><td><?php echo floor(($now-$born)/10000).'歳'; ?></td><td><?php echo $years.'年'; ?></td><td>{{ $player->height }}cm</td><td>{{ $pitcher_stat->weight }}kg</td><td>{{ $player->blood }}</td><td>{{ $player->p }}{{ $player->b }}</td><td>{{ $player->home }}</td><td><?php echo $salary.'万円'; ?></td></tr>
-                    @endforeach
+                      <tr>
+                        <td>{{ $pitcher_stat->number }}</td><td><a href="carp.pitcher?id={{ $pitcher_stat->id }}&name={{ $pitcher_stat->name }}">{{ $name }}</a></td><td>{{ $dob }}</td><td>{{ $pitcher_stat->old }}歳</td><td>{{ $pitcher_stat->years }}年目</td><td>{{ $pitcher_stat->height }}cm</td><td>{{ $pitcher_stat->weight }}kg</td><td>{{ $pitcher_stat->blood }}</td><td>{{ $pitcher_stat->p }}{{ $pitcher_stat->b }}</td><td>{{ $pitcher_stat->home }}</td><td>{{ $salary }}万円
+                        @if (Auth::check())
+                            {!! Form::open(['route' => ['pitcher.destroy', $pitcher_stat->id], 'method' => 'delete']) !!}
+                               
+                              {!! Form::submit('Delete', ['class' => 'btn']) !!}
+                            {!! Form::close() !!}
+                        @endif
+                        </td>
+                      </tr>
                   @endif
-                @endforeach
-              </table>
-              <table>
-                <tr><th colspan="11">内野手</th></tr>
-                <tr><th>No.</th><th>Name</th><th>DOB</th><th>Age</th><th>Years</th><th>Height</th><th>Weight</th><th>Blood</th><th>P/B</th><th>Home</th><th>Salary</th></tr>
-                @foreach ($players as $player)
-                  @if ($player->position == 3)
-                    @foreach ($player->statistics as $statistic)
+              @endforeach
+            </table>  
+            @endif
+            @if (count($statistics) > 0)
+            <table class="inFielderTable">
+              <tr><th colspan="11">内野手</th></tr>
+              <tr><th>No.</th><th>Name</th><th>DOB</th><th>Age</th><th>Years</th><th>Height</th><th>Weight</th><th>Blood</th><th>P/B</th><th>Home</th><th>Salary</th></tr>
+              @foreach ($statistics as $statistic)　
+                  @if ($statistic->position == "内野手")
+                      @php
+                          $name = str_replace("　", " ", $statistic->name);
+                          $dob = str_replace("-", "/", $statistic->dob);
+                          $salary = number_format($statistic->salary);
+                      @endphp
+                      <tr>
+                        <td>{{ $statistic->number }}</td><td><a href="carp.fielder?id={{ $statistic->id }}&name={{ $statistic->name }}">{{ $name }}</a></td><td>{{ $dob }}</td><td>{{ $statistic->old }}歳</td><td>{{ $statistic->years }}年目</td><td>{{ $statistic->height }}cm</td><td>{{ $statistic->weight }}kg</td><td>{{ $statistic->blood }}</td><td>{{ $statistic->p }}{{ $statistic->b }}</td><td>{{ $statistic->home }}</td><td>{{ $salary }}万円
+                        @if (Auth::check())
+                            {!! Form::open(['route' => ['fielder.destroy', $statistic->id], 'method' => 'delete']) !!}
+                               
+                              {!! Form::submit('Delete', ['class' => 'btn']) !!}
+                            {!! Form::close() !!}
+                        @endif
+                        </td>
+                      </tr>
+                  @endif
+              @endforeach
+            </table>
+            <table class="outFielderTable">
+              <tr><th colspan="11">外野手</th></tr>
+              <tr><th>No.</th><th>Name</th><th>DOB</th><th>Age</th><th>Years</th><th>Height</th><th>Weight</th><th>Blood</th><th>P/B</th><th>Home</th><th>Salary</th></tr>
+              @foreach ($statistics as $statistic)　
+                  @if ($statistic->position == "外野手")
+                      @php
+                          $name = str_replace("　", " ", $statistic->name);
+                          $dob = str_replace("-", "/", $statistic->dob);
+                          $salary = number_format($statistic->salary);
+                      @endphp
+                      <tr>
+                        <td>{{ $statistic->number }}</td><td><a href="carp.fielder?id={{ $statistic->id }}&name={{ $statistic->name }}">{{ $name }}</a></td><td>{{ $dob }}</td><td>{{ $statistic->old }}歳</td><td>{{ $statistic->years }}年目</td><td>{{ $statistic->height }}cm</td><td>{{ $statistic->weight }}kg</td><td>{{ $statistic->blood }}</td><td>{{ $statistic->p }}{{ $statistic->b }}</td><td>{{ $statistic->home }}</td><td>{{ $salary }}万円
+                        @if (Auth::check())
+                            {!! Form::open(['route' => ['fielder.destroy', $statistic->id], 'method' => 'delete']) !!}
+                               
+                              {!! Form::submit('Delete', ['class' => 'btn']) !!}
+                            {!! Form::close() !!}
+                        @endif
+                        </td>
+                      </tr>
+                  @endif
+              @endforeach
+            </table>
+            <table class="catcherTable">
+              <tr><th colspan="11">捕手</th></tr>
+              <tr><th>No.</th><th>Name</th><th>DOB</th><th>Age</th><th>Years</th><th>Height</th><th>Weight</th><th>Blood</th><th>P/B</th><th>Home</th><th>Salary</th></tr>
+              @foreach ($statistics as $statistic)　
+                  @if ($statistic->position == "捕手")
                       @php
                         //全角スペースを半角スペースに
-                          $name = str_replace("　", " ", $player->name);
-                          
-                        //年齢を生年月日から算出
-                          $now = date("Ymd");
-                          $born = str_replace("-", "", $player->dob);
-                          
+                          $name = str_replace("　", " ", $statistic->name);
                         //生年月日の-を/に変更
-                          $dob = str_replace("-", "/", $player->dob);
-                          
-                        //年数を入団年から算出
-                          $nowYear = date('Y');
-                          $years = $nowYear - $player->join;
-                        
+                          $dob = str_replace("-", "/", $statistic->dob);
                         //年棒にカンマ
                           $salary = number_format($statistic->salary);
                       @endphp
-                    <tr><td>{{ $statistic->number }}</td><td><?php echo $name; ?></td><td><?php echo $dob; ?></td><td><?php echo floor(($now-$born)/10000).'歳'; ?></td><td><?php echo $years.'年'; ?></td><td>{{ $player->height }}cm</td><td>{{ $statistic->weight }}kg</td><td>{{ $player->blood }}</td><td>{{ $player->p }}{{ $player->b }}</td><td>{{ $player->home }}</td><td><?php echo $salary.'万円'; ?></td></tr>
-                    @endforeach
+                      <tr>
+                        <td>{{ $statistic->number }}</td><td><a href="carp.fielder?id={{ $statistic->id }}&name={{ $statistic->name }}">{{ $name }}</a></td><td>{{ $dob }}</td><td>{{ $statistic->old }}歳</td><td>{{ $statistic->years }}年目</td><td>{{ $statistic->height }}cm</td><td>{{ $statistic->weight }}kg</td><td>{{ $statistic->blood }}</td><td>{{ $statistic->p }}{{ $statistic->b }}</td><td>{{ $statistic->home }}</td><td>{{ $salary }}万円
+                        @if (Auth::check())
+                            {!! Form::open(['route' => ['fielder.destroy', $statistic->id], 'method' => 'delete']) !!}
+                               
+                              {!! Form::submit('Delete', ['class' => 'btn']) !!}
+                            {!! Form::close() !!}
+                        @endif
+                        </td>
+                      </tr>
                   @endif
-                @endforeach
-              </table>
-              <table>
-                <tr><th colspan="11">外野手</th></tr>
-                <tr><th>No.</th><th>Name</th><th>DOB</th><th>Age</th><th>Years</th><th>Height</th><th>Weight</th><th>Blood</th><th>P/B</th><th>Home</th><th>Salary</th></tr>
-                @foreach ($players as $player)
-                  @if ($player->position == 4)
-                    @foreach ($player->statistics as $statistic)
-                      @php
-                          $name = str_replace("　", " ", $player->name);
-                          $now = date("Ymd");
-                          $born = str_replace("-", "", $player->dob);
-                          $dob = str_replace("-", "/", $player->dob);
-                          $nowYear = date('Y');
-                          $years = $nowYear - $player->join;
-                          $salary = number_format($statistic->salary);
-                      @endphp
-                    <tr><td>{{ $statistic->number }}</td><td><?php echo $name; ?></td><td><?php echo $dob; ?></td><td><?php echo floor(($now-$born)/10000).'歳'; ?></td><td><?php echo $years.'年'; ?></td><td>{{ $player->height }}cm</td><td>{{ $statistic->weight }}kg</td><td>{{ $player->blood }}</td><td>{{ $player->p }}{{ $player->b }}</td><td>{{ $player->home }}</td><td><?php echo $salary.'万円'; ?></td></tr>
-                    @endforeach
-                  @endif
-                @endforeach
-              </table>
-              <table>
-                <tr><th colspan="11">捕手</th></tr>
-                <tr><th>No.</th><th>Name</th><th>DOB</th><th>Age</th><th>Years</th><th>Height</th><th>Weight</th><th>Blood</th><th>P/B</th><th>Home</th><th>Salary</th></tr>
-                @foreach ($players as $player)
-                  @if ($player->position == 2)
-                    @foreach ($player->statistics as $statistic)
-                      @php
-                          $name = str_replace("　", " ", $player->name);
-                          $now = date("Ymd");
-                          $born = str_replace("-", "", $player->dob);
-                          $dob = str_replace("-", "/", $player->dob);
-                          $nowYear = date('Y');
-                          $years = $nowYear - $player->join;
-                          $salary = number_format($statistic->salary);
-                      @endphp
-                    <tr><td>{{ $statistic->number }}</td><td><?php echo $name; ?></td><td><?php echo $dob; ?></td><td><?php echo floor(($now-$born)/10000).'歳'; ?></td><td><?php echo $years.'年'; ?></td><td>{{ $player->height }}cm</td><td>{{ $statistic->weight }}kg</td><td>{{ $player->blood }}</td><td>{{ $player->p }}{{ $player->b }}</td><td>{{ $player->home }}</td><td><?php echo $salary.'万円'; ?></td></tr>
-                    @endforeach
-                  @endif
-                @endforeach
-              </table>
-              {{--<table>
-                <tr><th colspan="2">全選手</th></tr>
-                <tr><th>id</th><th>Name</th><tr>
-                  @foreach ($players as $player)
-                    <tr><th>{{ $player->id }}</th><td>{{ $player->name }}</td></tr>
-                  @endforeach
-              </table>--}}
-            @endif
-          </div><!--.table_pc-->
-          
-          <div class="table_sp col s12 z-depth-1">
-            @if (count($players) > 0)
-            <table>
-              <tr><th colspan="5">投手</th></tr>
-              <tr><th>No.</th><th>Name</th><th>DOB</th><th>Age</th><th>Blood</th></tr>
-              @foreach ($players as $player)
-                  @if ($player->position == 1 || $player->position == 5 )
-                    @foreach ($player->pitcher_stats as $pitcher_stat)
-                      @php
-                          $name = str_replace("　", " ", $player->name);
-                          $now = date("Ymd");
-                          $born = str_replace("-", "", $player->dob);
-                          $dob = str_replace("-", "/", $player->dob);
-                      @endphp
-                    <tr><td>{{ $pitcher_stat->number }}</td><td><?php echo $name; ?></td><td><?php echo $dob; ?></td><td><?php echo floor(($now-$born)/10000).'歳'; ?></td><td>{{ $player->blood }}</td></tr>
-                    @endforeach
-                  @endif
-                @endforeach
-            </table>
-            <table>
-              <tr><th colspan="5">内野手</th></tr>
-              <tr><th>No.</th><th>Name</th><th>DOB</th><th>Age</th><th>Blood</th></tr>
-              @foreach ($players as $player)
-                  @if ($player->position == 3)
-                    @foreach ($player->statistics as $statistic)
-                      @php
-                          $name = str_replace("　", " ", $player->name);
-                          $now = date("Ymd");
-                          $born = str_replace("-", "", $player->dob);
-                          $dob = str_replace("-", "/", $player->dob);
-                      @endphp
-                    <tr><td>{{ $statistic->number }}</td><td><?php echo $name; ?></td><td><?php echo $dob; ?></td><td><?php echo floor(($now-$born)/10000).'歳'; ?></td><td>{{ $player->blood }}</td></tr>
-                    @endforeach
-                  @endif
-                @endforeach
-            </table>
-            <table>
-              <tr><th colspan="5">外野手</th></tr>
-              <tr><th>No.</th><th>Name</th><th>DOB</th><th>Age</th><th>Blood</th></tr>
-              @foreach ($players as $player)
-                  @if ($player->position == 4)
-                    @foreach ($player->statistics as $statistic)
-                      @php
-                          $name = str_replace("　", " ", $player->name);
-                          $now = date("Ymd");
-                          $born = str_replace("-", "", $player->dob);
-                          $dob = str_replace("-", "/", $player->dob);
-                      @endphp
-                    <tr><td>{{ $statistic->number }}</td><td><?php echo $name; ?></td><td><?php echo $dob; ?></td><td><?php echo floor(($now-$born)/10000).'歳'; ?></td><td>{{ $player->blood }}</td></tr>
-                    @endforeach
-                  @endif
-                @endforeach
-            </table>
-            <table>
-              <tr><th colspan="5">捕手</th></tr>
-              <tr><th>No.</th><th>Name</th><th>DOB</th><th>Age</th><th>Blood</th></tr>
-              @foreach ($players as $player)
-                  @if ($player->position == 2)
-                    @foreach ($player->statistics as $statistic)
-                      @php
-                          $name = str_replace("　", " ", $player->name);
-                          $now = date("Ymd");
-                          $born = str_replace("-", "", $player->dob);
-                          $dob = str_replace("-", "/", $player->dob);
-                      @endphp
-                    <tr><td>{{ $statistic->number }}</td><td><?php echo $name; ?></td><td><?php echo $dob; ?></td><td><?php echo floor(($now-$born)/10000).'歳'; ?></td><td>{{ $player->blood }}</td></tr>
-                    @endforeach
-                  @endif
-                @endforeach
+              @endforeach
             </table>
             @endif
-          </div><!--.table_sp-->
-          
+        </div><!--table_pc-->  
+        <div class="table_sp col s12 z-depth-1">
+          @if (count($pitcher_stats) > 0)
+            <table class="pitcherTable">
+              <tr><th colspan="11">投手</th></tr>
+              <tr><th>No.</th><th>Name</th><th>DOB</th><th>Age</th><th>Blood</th></tr>
+              @foreach ($pitcher_stats as $pitcher_stat)　
+                  @if ($pitcher_stat->position == "先発" || $pitcher_stat->position == "リリーフ")
+                      @php
+                          $name = str_replace("　", " ", $pitcher_stat->name);
+                          $dob = substr(str_replace("-", "/", $pitcher_stat->dob), 5,5); //西暦を削除
+                          $salary = number_format($pitcher_stat->salary);
+                      @endphp
+                      <tr><td>{{ $pitcher_stat->number }}</td><td><a href="carp.pitcher?id={{ $pitcher_stat->id }}&name={{ $pitcher_stat->name }}">{{ $name }}</a></td><td>{{ $dob }}</td><td>{{ $pitcher_stat->old }}歳</td><td>{{ $pitcher_stat->blood }}</td></tr>
+                  @endif
+              @endforeach
+            </table>  
+            @endif
+            @if (count($statistics) > 0)
+            <table class="inFielderTable">
+              <tr><th colspan="11">内野手</th></tr>
+              <tr><th>No.</th><th>Name</th><th>DOB</th><th>Age</th><th>Blood</th></tr>
+              @foreach ($statistics as $statistic)　
+                  @if ($statistic->position == "内野手")
+                      @php
+                          $name = str_replace("　", " ", $statistic->name);
+                          $dob = substr(str_replace("-", "/", $statistic->dob), 5,5);
+                          $salary = number_format($statistic->salary);
+                      @endphp
+                      <tr><td>{{ $statistic->number }}</td><td><a href="carp.fielder?id={{ $statistic->id }}&name={{ $statistic->name }}">{{ $name }}</a></td><td>{{ $dob }}</td><td>{{ $statistic->old }}歳</td><td>{{ $statistic->blood }}</td></tr>
+                  @endif
+              @endforeach
+            </table>
+            <table class="outFielderTable">
+              <tr><th colspan="11">外野手</th></tr>
+              <tr><th>No.</th><th>Name</th><th>DOB</th><th>Age</th><th>Blood</th></tr>
+              @foreach ($statistics as $statistic)　
+                  @if ($statistic->position == "外野手")
+                      @php
+                          $name = str_replace("　", " ", $statistic->name);
+                          $dob = substr(str_replace("-", "/", $statistic->dob), 5,5);
+                          $salary = number_format($statistic->salary);
+                      @endphp
+                      <tr><td>{{ $statistic->number }}</td><td><a href="carp.fielder?id={{ $statistic->id }}&name={{ $statistic->name }}">{{ $name }}</a></td><td>{{ $dob }}</td><td>{{ $statistic->old }}歳</td><td>{{ $statistic->blood }}</td></tr>
+                  @endif
+              @endforeach
+            </table>
+            <table class="catcherTable">
+              <tr><th colspan="11">捕手</th></tr>
+              <tr><th>No.</th><th>Name</th><th>DOB</th><th>Age</th><th>Blood</th></tr>
+              @foreach ($statistics as $statistic)　
+                  @if ($statistic->position == "捕手")
+                      @php
+                          $name = str_replace("　", " ", $statistic->name);
+                          $dob = substr(str_replace("-", "/", $statistic->dob), 5,5);
+                          $salary = number_format($statistic->salary);
+                      @endphp
+                      <tr><td>{{ $statistic->number }}</td><td><a href="carp.fielder?id={{ $statistic->id }}&name={{ $statistic->name }}">{{ $name }}</a></td><td>{{ $dob }}</td><td>{{ $statistic->old }}歳</td><td>{{ $statistic->blood }}</td></tr>
+                  @endif
+              @endforeach
+            </table>
+          @endif
+        </div><!--table_sp-->
       </div><!--.row-->
     </div><!--.container-->
 
-    <div class="container fielder">
-      <div class="row">
-        <div class="col s12 m6 z-depth-0 info_box">
-          
-          <ul id="slide-out" class="sidenav">
-            
-            <li>{!! link_to_route('carp.pitchers', '投手成績') !!}</li>
-            <li>{!! link_to_route('carp.fielders', '打者成績') !!}</li>
-            
-            <li><div class="divider"></div></li>
-            
-            <li><a class="subheader">CENTRAL LEAGUE</a></li>
-            <li><a class="waves-effect" href="#!">広島東洋カープ</a></li>
-            <li><a class="waves-effect" href="#!">阪神タイガース</a></li>
-            <li><a class="waves-effect" href="#!">東京ヤクルトスワローズ</a></li>
-            <li><a class="waves-effect" href="#!">読売ジャイアンツ</a></li>
-            <li><a class="waves-effect" href="#!">横浜DeNAベイスターズ</a></li>
-            <li><a class="waves-effect" href="#!">中日ドラゴンズ</a></li>
-            
-            <li><a class="subheader">PACIFIC LEAGUE</a></li>
-            <li><a class="waves-effect" href="#!">福岡ソフトバンクホークス</a></li>
-            <li><a class="waves-effect" href="#!">千葉ロッテマリーンズ</a></li>
-            <li><a class="waves-effect" href="#!">日本ハムファイターズ</a></li>
-            <li><a class="waves-effect" href="#!">東北楽天イーグルス</a></li>
-            <li><a class="waves-effect" href="#!">埼玉西武ライオンズ</a></li>
-            <li><a class="waves-effect" href="#!">オリックスバファローズ</a></li>
-          </ul>
-
-        </div><!--.col s6-->
-    
-      </div>
-    </div><!--.container-->
-    
-    <footer class="z-depth-2 footer_pc">
-      <div class="container">
-        <ul>
-          <li><span class="pointer">{!! link_to_route('home', 'ホーム') !!}</span></li>
-          <li><span class="pointer">このサイトについて</span></li>
-          <li><span class="pointer">プライバシーポリシー</span></li>
-          <li><span class="pointer">お問い合わせ</span></li>
-        </ul>
-      </div>  
-      <div class="container copyright">
-      © 2018 BaseBallChart. All rights reserved.
-      </div>
-    </footer>
-    
-    <footer class="z-depth-2 footer_sp">
-      <div class="container">
-          <p classe="font_sp"><span class="">{!! link_to_route('home', 'ホーム') !!}</span></p>
-          <p classe="font_sp"><span class="">このサイトについて</span></p>
-          <p classe="font_sp"><span class="">プライバシーポリシー</span></p>
-          <p classe="font_sp"><span class="">お問い合わせ</span></p>
-      </div>  
-      <div class="container copyright">
-      © 2018 BaseBallChart. All rights reserved.
-      </div>
-    </footer>
-    
     <script src="js/main.js"></script>
 @endsection

@@ -3,8 +3,8 @@
 @section('content')
   <link rel="stylesheet" href="{{ secure_asset('css/carp/pitchers.css') }}"> 
   <body>
-    <section class="top z-depth-1">
-    <header class="z-depth-0">
+    <section class="top z-depth-1 to_slide">
+    <header>
       <div class="container">
         <div class="row">
           <div class="col s12 m12 header">
@@ -13,245 +13,180 @@
             </div>
             <div class="header_menu_pc">
               <ul>
-                <li><span class="pointer">{!! link_to_route('carp.list', '選手一覧') !!}</span></li>
-                <li><span class="pointer">{!! link_to_route('carp.pitchers', '投手成績') !!}</span></li>
-                <li><span class="pointer">{!! link_to_route('carp.fielders', '打者成績') !!}</span></li>
+                <li><span class="pointer"><a href="carp.list?season=2018">選手一覧</a></span></li>
+                <li><span class="pointer"><a href="carp.pitchers?season=2018">投手成績</a></span></li>
+                <li><span class="pointer"><a href="carp.fielders?season=2018">打者成績</a></span></li>
               </ul>
             </div>
             <div class="header_menu_sp">
-              <a data-target="slide-out" class="waves-effect waves-light sidenav-trigger btn-floating btn-large red darken-3"><i class="material-icons">menu</i></a>
+              <a class="waves-effect waves-light slide-trigger btn-floating btn red darken-3 btnOpen"><i class="material-icons">menu</i></a>
+              <a class="waves-effect waves-light slide-trigger btn-floating btn red darken-3 btnClose close"><i class="material-icons">close</i></a>
             </div>
           </div>  
         </div>
       </div>
+      <div class="col s12 m6">
+        <ul class="slideToggle">
+          <h4>- MENU -</h4>
+          <h3 class="h3"><a href="carp.list?season=2018">選手一覧</a></h3>
+          <hr>
+          <h3 class="h3"><a href="carp.pitchers?season=2018">投手成績</a></h3>
+          <hr>
+          <h3 class="h3"><a href="carp.fielders?season=2018">打者成績</a></h3>
+          <hr>
+        </ul>
+      </div>
     </header>
-    
-    <ul id="slide-out" class="sidenav">
-      <li><a class="subheader">MENU</a></li>
-      <li>{!! link_to_route('carp.list', '選手一覧') !!}</li>
-      <li>{!! link_to_route('carp.pitchers', '投手成績') !!}</li>
-      <li>{!! link_to_route('carp.fielders', '打者成績') !!}</li>
-    </ul>
-    <div class="container teams">
-      <div class="row">
-        <div class="col s12 m6 z-depth-0">
-          <h3 class="carp z-depth-0"><img src="images/carp_logo.png">広島東洋カープ 投手成績</h3>
-        </div>   
-        <div class="col s12 m6 z-depth-0">  
-          <div class="input-field">
-            <select>
-              <optgroup label="Season">
-                <option value="1">2018年</option>
-              </optgroup>
-            </select>
-            <label>Season</label>
-          </div><!--.input-field-->
-        </div>  
+    <div class="container">
+        <div class="row">
+          <div class="list">
+            <div class="col s12">
+              <h3><img src="images/carp_logo.png">広島東洋カープ 投手成績</h3>
+            </div>
+            <div class="col s12 m6 selector">
+              
+              @foreach ($pitcher_stats as $pitcher_stat)
+                <!-- Dropdown Structure -->
+                <div class="z-depth-1">
+                  <ul class="select z-depth-1">
+                    <div class="box_close">
+                      <div><h6>Season</h6></div>
+                      <i class="material-icons trigger select_close_btn">close</i>
+                    </div>
+                    <li><a href="carp.pitchers?season=2018">2018年</a></li>
+                    <li><a href="carp.pitchers?season=2017">2017年</a></li>
+                  </ul>
+                </div>
+                <p class="label">Season</p><br>
+                <div class="trigger box">
+                  <div>
+                    <p style="font-size: 1.2em;" >{{ $pitcher_stat->season }}年</p>
+                  </div>
+                  <div>
+                    <i class="material-icons">arrow_drop_down</i>
+                  </div>
+                </div>
+                <?php break; ?>
+              @endforeach
+              <hr>
+            </div><!--.selector-->
+            <div class="col s12 m6 selector">
+              <!-- Dropdown Structure -->
+              <div class="z-depth-1">
+                <ul class="select z-depth-1">
+                  <div class="box_close">
+                    <div><h6>Runking</h6></div>
+                    <i class="material-icons trigger select_close_btn">close</i>
+                  </div>
+                  <li><a href="#" class="all_p_runking_trigger">全ランキング</a></li>
+                </ul>
+              </div>
+              <p class="label">Runking</p><br>
+              <div class="trigger box">
+                <div>
+                  <p style="font-size: 1.2em;" id="selected">全ランキング</p>
+                </div>
+                <div>
+                  <i class="material-icons">arrow_drop_down</i>
+                </div>
+              </div>
+              <hr>
+            </div><!--.selector-->
+          </div><!--.list-->
+        </div><!--.row-->
       </div><!--.container-->
     </section><!--.top-->
-        
     <section class="middle">
-    <div class="container barChart z-depth-1"> 
-      <div class="row">
-        <div class="col s12 m12">
-          <h4>奪三振 TOP10</h4>
-          <div class="barChart_pc">
-            <div id="barChart_hr"></div>
+      <div class="container"> 
+        <div class="row">
+          <div class="col s12 m7">
+            <h3 style="text-align: center;">奪三振ランキング</h3>
           </div>
-        </div>
-        <div class="barChart_sp col s12">
-          <div id="barChart_hr_sp"></div>
-        </div>
-      </div><!--.row-->
-    </div><!--.container-->  
-
-    <div class="container section_sp"> 
-      <div class="row">    
-        <div class="col s12 m6 table_sp">
-          <table>
-            <tr><th colspan="3">セリーグ 奪三振ランキング</th></tr>
-            <tr><td><img src="images/crown1.png" class="crown_sp">菅野 智之</td><td>巨人</td><td>200</td></tr>
-            <tr><td><img src="images/crown2.png" class="crown_sp">大瀬良 大地</td><td>広島</td><td>159</td></tr>
-            <tr><td><img src="images/crown3.png" class="crown_sp">東 克樹</td><td>DeNA</td><td>155</td></tr>
-          </table>
-        </div><!--.col s12-->  
-        <div class="col s12 m6 table_sp">
-          <table>
-            <tr><th colspan="3">パリーグ 奪三振ランキング</th></tr>
-            <tr><td><img src="images/crown1.png" class="crown_sp">則本 昂大</td><td>楽天</td><td>187</td></tr>
-            <tr><td><img src="images/crown2.png" class="crown_sp">千賀 滉大</td><td>ソフトバンク</td><td>163</td></tr>
-            <tr><td><img src="images/crown3.png" class="crown_sp">岸 孝之</td><td>楽天</td><td>159</td></tr>
-          </table>
-        </div><!--.col s12-->
-      </div><!--.row-->
-    </div><!--.container-->
-      
-    <!--<div class="container barChart z-depth-1"> 
-      <div class="row">
-        <div class="col s12 m12">
-          <h4>防御率 TOP10</h4>
-          <div class="barChart_pc">
-            <div id="barChart_era"></div>
-          </div>  
-        </div>
-        <div class="barChart_sp col s12">
-          <div id="barChart_era_sp"></div>
-        </div>
-      </div><!--.row-->
-    <!--</div><!--.container-->
-        
-    <!--<div class="container section_sp"> 
-      <div class="row">    
-        <div class="col s12 m6 table_sp">
-          <table>
-            <tr><th colspan="3">セリーグ 防御率ランキング（先発投手）</th></tr>
-            <tr><td><img src="images/crown1.png" class="crown_sp">菅野 智之</td><td>巨人</td><td>2.14</td></tr>
-            <tr><td><img src="images/crown2.png" class="crown_sp">東 克樹</td><td>DeNA</td><td>2.45</td></tr>
-            <tr><td><img src="images/crown3.png" class="crown_sp">大瀬良 大地</td><td>広島</td><td>2.62</td></tr>
-          </table>
-        </div><!--.col s12-->  
-        <!--<div class="col s12 m6 table_sp">
-          <table>
-            <tr><th colspan="3">パリーグ 防御率ランキング（先発投手）</th></tr>
-            <tr><td><img src="images/crown1.png" class="crown_sp">岸 孝之</td><td>楽天</td><td>2.72</td></tr>
-            <tr><td><img src="images/crown2.png" class="crown_sp">菊池 雄星</td><td>西武</td><td>3.08</td></tr>
-            <tr><td><img src="images/crown3.png" class="crown_sp">上沢 直之</td><td>日本ハム</td><td>3.16</td></tr>
-          </table>
-        </div><!--.col s12-->
-      <!--</div><!--.row-->
-    <!--</div><!--.container-->
-      
-      
+          <div class="col s12 m7 barChart z-depth-1">
+            <div class="flex">
+              <div class="name">
+                <ul>
+                  <li><a href="carp.pitcher?id={{ $strikeouts_ids[0] }}&name={{ $strikeouts_names[0] }}">{{ $strikeouts_names[0] }}</a></li><li><a href="carp.pitcher?id={{ $strikeouts_ids[1] }}&name={{ $strikeouts_names[1] }}">{{ $strikeouts_names[1] }}</a></li><li><a href="carp.pitcher?id={{ $strikeouts_ids[2] }}&name={{ $strikeouts_names[2] }}">{{ $strikeouts_names[2] }}</a></li><li><a href="carp.pitcher?id={{ $strikeouts_ids[3] }}&name={{ $strikeouts_names[3] }}">{{ $strikeouts_names[3] }}</a></li><li><a href="carp.pitcher?id={{ $strikeouts_ids[4] }}&name={{ $strikeouts_names[4] }}">{{ $strikeouts_names[4] }}</a></li><li><a href="carp.pitcher?id={{ $strikeouts_ids[5] }}&name={{ $strikeouts_names[5] }}">{{ $strikeouts_names[5] }}</a></li><li><a href="carp.pitcher?id={{ $strikeouts_ids[6] }}&name={{ $strikeouts_names[6] }}">{{ $strikeouts_names[6] }}</a></li><li><a href="carp.pitcher?id={{ $strikeouts_ids[7] }}&name={{ $strikeouts_names[7] }}">{{ $strikeouts_names[7] }}</a></li><li><a href="carp.pitcher?id={{ $strikeouts_ids[8] }}&name={{ $strikeouts_names[8] }}">{{ $strikeouts_names[8] }}</a></li><li><a href="carp.pitcher?id={{ $strikeouts_ids[9] }}&name={{ $strikeouts_names[9] }}">{{ $strikeouts_names[9] }}</a></li>
+                </ul>
+              </div>
+              <div class="chart" id="barChart_strikeout"></div>
+            </div>  
+          </div><!--col s12 m6-->
+          <div class="col s12 m4 offset-m1 table_runking">
+            <table>
+              <tr><th colspan="3">セリーグ 奪三振ランキング</th></tr>
+              <tr><td><img src="images/crown1.png" class="crown_sp">菅野 智之</td><td>巨人</td><td>200</td></tr>
+              <tr><td><img src="images/crown2.png" class="crown_sp">大瀬良 大地</td><td>広島</td><td>159</td></tr>
+              <tr><td><img src="images/crown3.png" class="crown_sp">東 克樹</td><td>DeNA</td><td>155</td></tr>
+            </table>
+            <table>
+              <tr><th colspan="3">パリーグ 奪三振ランキング</th></tr>
+              <tr><td><img src="images/crown1.png" class="crown_sp">則本 昂大</td><td>楽天</td><td>187</td></tr>
+              <tr><td><img src="images/crown2.png" class="crown_sp">千賀 滉大</td><td>ソフトバンク</td><td>163</td></tr>
+              <tr><td><img src="images/crown3.png" class="crown_sp">岸 孝之</td><td>楽天</td><td>159</td></tr>
+            </table>
+        　</div><!--col s12 m4-->
+        </div><!--.row-->
+      </div><!--.container-->
+   
+      <div class="container"> 
+        <div class="row">
+          <div class="col s12 m7">
+            <h3 style="text-align: center;">防御率ランキング</h3>
+          </div>
+          <div class="col s12 m7 barChart z-depth-1">
+            <div class="flex">
+              <div class="name">
+                <ul>
+                  <li><a href="carp.pitcher?id={{ $eras_ids[0] }}&name={{ $eras_names[0] }}">{{ $eras_names[0] }}</a></li><li><a href="carp.pitcher?id={{ $eras_ids[1] }}&name={{ $eras_names[1] }}">{{ $eras_names[1] }}</a></li><li><a href="carp.pitcher?id={{ $eras_ids[2] }}&name={{ $eras_names[2] }}">{{ $eras_names[2] }}</a></li><li><a href="carp.pitcher?id={{ $eras_ids[3] }}&name={{ $eras_names[3] }}">{{ $eras_names[3] }}</a></li><li><a href="carp.pitcher?id={{ $eras_ids[4] }}&name={{ $eras_names[4] }}">{{ $eras_names[4] }}</a></li><li><a href="carp.pitcher?id={{ $eras_ids[5] }}&name={{ $eras_names[5] }}">{{ $eras_names[5] }}</a></li><li><a href="carp.pitcher?id={{ $eras_ids[6] }}&name={{ $eras_names[6] }}">{{ $eras_names[6] }}</a></li><li><a href="carp.pitcher?id={{ $eras_ids[7] }}&name={{ $eras_names[7] }}">{{ $eras_names[7] }}</a></li><li><a href="carp.pitcher?id={{ $eras_ids[8] }}&name={{ $eras_names[8] }}">{{ $eras_names[8] }}</a></li><li><a href="carp.pitcher?id={{ $eras_ids[9] }}&name={{ $eras_names[9] }}">{{ $eras_names[9] }}</a></li>
+                </ul>
+              </div>
+              <div class="chart" id="barChart_era"></div>
+            </div><!--flex-->
+          </div><!--barChart-->
+          <div class="col s12 m4 offset-m1 table_runking">
+            <table>
+              <tr><th colspan="3">セリーグ 防御率ランキング（先発投手）</th></tr>
+              <tr><td><img src="images/crown1.png" class="crown_sp">菅野 智之</td><td>巨人</td><td>2.14</td></tr>
+              <tr><td><img src="images/crown2.png" class="crown_sp">東 克樹</td><td>DeNA</td><td>2.45</td></tr>
+              <tr><td><img src="images/crown3.png" class="crown_sp">大瀬良 大地</td><td>広島</td><td>2.62</td></tr>
+            </table>
+            <table>
+              <tr><th colspan="3">パリーグ 防御率ランキング（先発投手）</th></tr>
+              <tr><td><img src="images/crown1.png" class="crown_sp">岸 孝之</td><td>楽天</td><td>2.72</td></tr>
+              <tr><td><img src="images/crown2.png" class="crown_sp">菊池 雄星</td><td>西武</td><td>3.08</td></tr>
+              <tr><td><img src="images/crown3.png" class="crown_sp">上沢 直之</td><td>日本ハム</td><td>3.16</td></tr>
+            </table>
+          </div><!--.col s12-->
+        </div><!--.row-->
+      </div><!--.container-->
       <div class="container raderChart z-depth-1"> 
-      <div class="row">
-        
-        <div class="col s12 m6">
-          <h4>チーム投手成績</h4>
-          <div class="input-field">
-            <select>
-              <optgroup label="Season">
-                <option value="1">2018年</option>
-              </optgroup>
-            </select>
-            <label>Season</label>
-          </div><!--.input-field-->
-          <table>
-            <tr><th></th><th>防御率</th><th>セーブ</th><th>ホールド</th><th>奪三振</th><th>WHIP</th><th>QS</th></tr>
-            <tr><th>広島</th><td>4.12</td><td>38</td><td>98</td><td>1041</td><td>1.41</td><td>45.45</td></tr>
-            <tr><th>セリーグ</th><td>4.10</td><td>34</td><td>98</td><td>1064</td><td>1.37</td><td>43.82</td></tr>
-            <tr><th>パリーグ</th><td>3.90</td><td>35.5</td><td>103</td><td>1014</td><td>1.31</td><td>48.83</td></tr>
-          </table>
-          
-         </div>
-         
+        <div class="row">
+          <div class="col s12 m6">
+            <h4>チーム投手成績</h4>
+            <div class="input-field">
+              <select>
+                <optgroup label="Season">
+                  <option value="1">2018年</option>
+                </optgroup>
+              </select>
+              <label>Season</label>
+            </div><!--.input-field-->
+            <table>
+              <tr><th></th><th>防御率</th><th>セーブ</th><th>ホールド</th><th>奪三振</th><th>WHIP</th><th>QS</th></tr>
+              <tr><th>広島</th><td>4.12</td><td>38</td><td>98</td><td>1041</td><td>1.41</td><td>45.45</td></tr>
+              <tr><th>セリーグ</th><td>4.10</td><td>34</td><td>98</td><td>1064</td><td>1.37</td><td>43.82</td></tr>
+              <tr><th>パリーグ</th><td>3.90</td><td>35.5</td><td>103</td><td>1014</td><td>1.31</td><td>48.83</td></tr>
+            </table>
+          </div>
           <div class="col s12 m6">
             <div id="raderChart_team_ave"></div>
           </div>
-
-      </div><!--.row-->
-    </div><!--.container-->
-      
-    </section><!--.-->
-    
-    <footer class="z-depth-2 footer_pc">
-      <div class="container">
-        <ul>
-          <li><span class="pointer">{!! link_to_route('home', 'ホーム') !!}</span></li>
-          <li><span class="pointer">このサイトについて</span></li>
-          <li><span class="pointer">プライバシーポリシー</span></li>
-          <li><span class="pointer">お問い合わせ</span></li>
-        </ul>
-      </div>  
-      <div class="container copyright">
-      © 2018 BaseBallChart. All rights reserved.
-      </div>
-    </footer>
-    
-    <footer class="z-depth-2 footer_sp">
-      <div class="container">
-          <p classe="font_sp"><span class="">{!! link_to_route('home', 'ホーム') !!}</span></p>
-          <p classe="font_sp"><span class="">このサイトについて</span></p>
-          <p classe="font_sp"><span class="">プライバシーポリシー</span></p>
-          <p classe="font_sp"><span class="">お問い合わせ</span></p>
-      </div>  
-      <div class="container copyright">
-      © 2018 BaseBallChart. All rights reserved.
-      </div>
-    </footer>
+        </div><!--.row-->
+      </div><!--.container-->
+    </section><!--.middle-->
     <script>
-      var barChart_hr = echarts.init(document.getElementById('barChart_hr'));
-      var option = {
-
-        color: ['#00bcd4'],
-        tooltip : {
-            show: false,
-            trigger: 'axis',
-            axisPointer : {            
-                type : 'shadow'        
-            }
-        },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        xAxis : [
-            {
-                type : 'category',
-                data : ['大瀬良','岡田','ジョンソン','九里','フランスア','一岡','野村','中崎','今村','アドゥワ',],
-                axisTick: {
-                    alignWithLabel: true
-                },
-                axisLabel: {
-                  rotate: 20,
-                  fontSize: 12,
-                  fontWeight: 400,
-                }
-            }
-        ],
-        yAxis : [
-            {
-                type : 'value'
-            }
-        ],
-        series : [
-            {
-                name:'奪三振',
-                type:'bar',
-                barWidth: '50%',
-                data:[200,180,170,160,150,140,131,120,111,100],
-                label: {
-                        normal: {
-                            show: true,
-                            position: 'insideTop'
-                        }
-                    },
-                itemStyle: {
-                      normal: {
-                          color: new echarts.graphic.LinearGradient(
-                            0, 0, 0, 1, [{
-                                    offset: 0,
-                                    color: '#E0402A'
-                                },
-                                {
-                                    offset: 0.5,
-                                    color: '#D4382D'
-                                },
-                                {
-                                    offset: 1,
-                                    color: '#A12B22'
-                                }
-                            ]
-                        )//color
-                      }
-                },
-            }
-        ]
-    };
-      barChart_hr.setOption(option);
-      
-      var barChart_hr_sp = echarts.init(document.getElementById('barChart_hr_sp'));
+      var barChart = echarts.init(document.getElementById('barChart_strikeout'));
       var option = {
 
         tooltip : {
@@ -271,11 +206,15 @@
             containLabel: true
         },
         xAxis:  {
-            type: 'value'
+            type: 'value',
+            axisTick: {
+              show: false },
+            axisLabel: {
+              show: false },
         },
         yAxis: {
             type: 'category',
-            data: ['アドゥワ','今村','中崎','野村','一岡','フランスア','九里','ジョンソン','岡田','大瀬良',]
+            //data: ['<?php print_r($strikeouts_names[9]); ?>','<?php print_r($strikeouts_names[8]); ?>','<?php print_r($strikeouts_names[7]); ?>','<?php print_r($strikeouts_names[6]); ?>','<?php print_r($strikeouts_names[5]); ?>','<?php print_r($strikeouts_names[4]); ?>','<?php print_r($strikeouts_names[3]); ?>','<?php print_r($strikeouts_names[2]); ?>','<?php print_r($strikeouts_names[1]); ?>','<?php print_r($strikeouts_names[0]); ?>',]
         },
         series: [
             {
@@ -301,14 +240,77 @@
                         }
                       }
                 },
-                data: [100,110,120,130,140,150,160,170,180,190,]
+                data: ['<?php print_r($strikeouts[9]); ?>','<?php print_r($strikeouts[8]); ?>','<?php print_r($strikeouts[7]); ?>','<?php print_r($strikeouts[6]); ?>','<?php print_r($strikeouts[5]); ?>','<?php print_r($strikeouts[4]); ?>','<?php print_r($strikeouts[3]); ?>','<?php print_r($strikeouts[2]); ?>','<?php print_r($strikeouts[1]); ?>','<?php print_r($strikeouts[0]); ?>',]
             },
            
         ]
     };
-      barChart_hr_sp.setOption(option);
-      
- 
+      barChart.setOption(option);
+
+      var barChart = echarts.init(document.getElementById('barChart_era'));
+      //チャートに表示する数字を整形するため、変数に。sprintfで末尾が０でも表示
+      var era = ['{{ sprintf("%.2f",$eras[9]) }}','{{ sprintf("%.2f",$eras[8]) }}','{{ sprintf("%.2f",$eras[7]) }}','{{ sprintf("%.2f",$eras[6]) }}','{{ sprintf("%.2f",$eras[5]) }}','{{ sprintf("%.2f",$eras[4]) }}','{{ sprintf("%.2f",$eras[3]) }}','{{ sprintf("%.2f",$eras[2]) }}','{{ sprintf("%.2f",$eras[1]) }}','{{ sprintf("%.2f",$eras[0]) }}',]
+      var option = {
+
+        tooltip : {
+            show: false,
+            trigger: 'axis',
+            axisPointer : {            
+                type : 'shadow'        
+            }
+        },
+        legend: {
+            data: ['']
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis:  {
+            type: 'value',
+            axisTick: {
+              show: false },
+            axisLabel: {
+              show: false },
+        },
+        yAxis: {
+            type: 'category',
+            //data: ['<?php print_r($eras_names[9]); ?>','<?php print_r($eras_names[8]); ?>','<?php print_r($eras_names[7]); ?>','<?php print_r($eras_names[6]); ?>','<?php print_r($eras_names[5]); ?>','<?php print_r($eras_names[4]); ?>','<?php print_r($eras_names[3]); ?>','<?php print_r($eras_names[2]); ?>','<?php print_r($eras_names[1]); ?>','<?php print_r($eras_names[0]); ?>',]
+        },
+        series: [
+            {
+                name: '',
+                type: 'bar',
+                stack: '',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'insideRight',
+                        formatter: function(data) {
+                            return era[data.dataIndex];
+                        },
+                    }
+                },
+                itemStyle: {
+                      normal: {
+                        color: {
+                          colorStops: [{
+                          offset: 0,
+                          color: '#c6342a' // 0% 
+                          }, {
+                              offset: 1,
+                              color: '#E5422B' // 100% 
+                          }],
+                        }
+                      }
+                },
+                data: [10-'<?php print_r($eras[9]); ?>',10-'<?php print_r($eras[8]); ?>',10-'<?php print_r($eras[7]); ?>',10-'<?php print_r($eras[6]); ?>',10-'<?php print_r($eras[5]); ?>',10-'<?php print_r($eras[4]); ?>',10-'<?php print_r($eras[3]); ?>',10-'<?php print_r($eras[2]); ?>',10-'<?php print_r($eras[1]); ?>',10-'<?php print_r($eras[0]); ?>',]
+            },
+        ]
+    };
+      barChart.setOption(option);
       
       var raderChart_team_ave = echarts.init(document.getElementById('raderChart_team_ave'));
       var lineStyle = {
@@ -427,6 +429,5 @@
       };
       raderChart_team_ave.setOption(option);
     </script> 
-
-     <script src="js/main.js"></script>
+    <script src="js/main.js"></script>
 @endsection

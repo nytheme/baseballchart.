@@ -7,15 +7,32 @@ use Illuminate\Http\Request;
 use App\Player; //テーブルplayerにアクセスできる
 
 use App\Statistic;
+use App\Pitcher_stat;
 
 class CarpListController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index()//statistics/pitcher_stats->player
+    {   
+        $season = $_GET['season']; //選手リンクにセットした選手idを取得
+        
+        $statistics = Statistic::where('season', $season)->orderBy('number', 'asc')->get();
+        $pitcher_stats = Pitcher_stat::where('season', $season)->orderBy('number', 'asc')->get();
+        //$pitcher_stats = Pitcher_stat::orderBy('number', 'asc')->get();
+        
+        $data = [
+            'statistics' => $statistics,
+            'pitcher_stats' => $pitcher_stats
+        ];
+        
+        return view('carp.list', $data);
+    } 
+    
+    public function indexCreate()
+    {
+        return view('carp.create');
+    }
+    
+    /*public function index()//player->statistics/pitcher_stats
     {   
         $players = Player::all();
         
@@ -26,26 +43,6 @@ class CarpListController extends Controller
         return view('carp.list', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $player = new Player;
-        
-        return view('carp.create',[
-            'player' => $player,
-        ]);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $player = new Player;
@@ -65,48 +62,23 @@ class CarpListController extends Controller
         $player->save();
 
         return redirect('carp.list');//->back();
-    }
+    }*/
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
        //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

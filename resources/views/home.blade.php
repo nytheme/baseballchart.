@@ -27,21 +27,35 @@
         </div>
         
         <div class="box col s12 m12 z-depth-1">
-          
           <div class="inline">
             <!--<h4><img src="images/bat_icon.png" class="check"></h4>-->
             <h4 class="h4">本塁打ランキング</h4>
           </div>
-          
           <div class="box_contents">
-            <div class=" z-depth-0">
+            <div>
               <div id="barChart_c_hr"></div>
               <div id="barChart_c_hr_sp"></div>
             </div>
-    
-            <div class="z-depth-0">
+            <div>
               <div id="barChart_p_hr"></div>
               <div id="barChart_p_hr_sp"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="box col s12 m12 z-depth-1">
+          <div class="inline">
+            <!--<h4><img src="images/bat_icon.png" class="check"></h4>-->
+            <h4 class="h4">打率ランキング</h4>
+          </div>
+          <div class="box_contents">
+            <div>
+              <div id="barChart_c_b_ave"></div>
+              <div id="barChart_c_b_ave_sp"></div>
+            </div>
+            <div>
+              <div id="barChart_p_b_ave"></div>
+              <div id="barChart_p_b_ave_sp"></div>
             </div>
           </div>
         </div>
@@ -77,7 +91,7 @@
           <div class="col s12 m6 info_table">
             <h4>セリーグ</h4>
             <table>
-              <tr><th>広島</th><td>{!! link_to_route('carp.list', '選手一覧') !!}</td><td>{!! link_to_route('carp.pitchers', '投手成績') !!}</td><td>{!! link_to_route('carp.fielders', '打者成績') !!}</td></tr>
+              <tr><th>広島</th><td><a href="carp.list?season=2018">選手一覧</a></td><td><a href="carp.pitchers?season=2018">投手成績</a></td><td><a href="carp.fielders?season=2018">打者成績</a></td></tr>
               <tr><th>阪神</th><td>選手一覧</td><td>投手成績</td><td>打者成績</td></tr>
               <tr><th>DeNA</th><td>選手一覧</td><td>投手成績</td><td>打者成績</td></tr>
               <tr><th>巨人</th><td>選手一覧</td><td>投手成績</td><td>打者成績</td></tr>
@@ -100,78 +114,15 @@
         
       </div><!--.row-->
     </div><!--.container-->
-        
-    <div class="container fielder">
-      <div class="row">
-        <div class="col s12 m6 z-depth-0 info_box">
-          
-          <ul id="slide-out" class="sidenav">
-            
-            <li><a href="#!">トップページ</a></li>
-            
-            <li><div class="divider"></div></li>
-            
-            <li><a class="subheader">CENTRAL LEAGUE</a></li>
-            <li><a class="waves-effect" href="#!">広島東洋カープ</a></li>
-            <li><a class="waves-effect" href="#!">阪神タイガース</a></li>
-            <li><a class="waves-effect" href="#!">東京ヤクルトスワローズ</a></li>
-            <li><a class="waves-effect" href="#!">読売ジャイアンツ</a></li>
-            <li><a class="waves-effect" href="#!">横浜DeNAベイスターズ</a></li>
-            <li><a class="waves-effect" href="#!">中日ドラゴンズ</a></li>
-            
-            <li><a class="subheader">PACIFIC LEAGUE</a></li>
-            <li><a class="waves-effect" href="#!">福岡ソフトバンクホークス</a></li>
-            <li><a class="waves-effect" href="#!">千葉ロッテマリーンズ</a></li>
-            <li><a class="waves-effect" href="#!">日本ハムファイターズ</a></li>
-            <li><a class="waves-effect" href="#!">東北楽天イーグルス</a></li>
-            <li><a class="waves-effect" href="#!">埼玉西武ライオンズ</a></li>
-            <li><a class="waves-effect" href="#!">オリックスバファローズ</a></li>
-          </ul>
-
-        </div><!--.col s6-->
-    
-      </div>
-    </div><!--.container-->
-    
-    <div class="footer z-depth-1">
-      <footer class="footer_text footer_pc">
-        <div class="container">
-          <ul>
-            <li><span class="pointer">{!! link_to_route('home', 'ホーム') !!}</span></li>
-            <li><span class="pointer">このサイトについて</span></li>
-            <li><span class="pointer">プライバシーポリシー</span></li>
-            <li><span class="pointer">お問い合わせ</span></li>
-            {{--@if (Auth::check())
-            @else
-            <li>{!! link_to_route('login', '管理者ログイン') !!}</li>
-            @endif
-            @if (Auth::check())
-            <li>{!! link_to_route('logout.get', 'ログアウト') !!}</li>
-            @endif--}}
-          </ul>
-        </div>  
-        <div class="footer-copyright">
-          <div class="container copyright">
-          © 2018 BaseBallChart. All rights reserved.
-          </div>
-        </div>
-      </footer> 
-    </div><!--.footer-->
-    
-    <footer class="z-depth-2 footer_sp">
-      <div class="container">
-          <p classe="font_sp"><span class="">{!! link_to_route('home', 'ホーム') !!}</span></p>
-          <p classe="font_sp"><span class="">このサイトについて</span></p>
-          <p classe="font_sp"><span class="">プライバシーポリシー</span></p>
-          <p classe="font_sp"><span class="">お問い合わせ</span></p>
-      </div>  
-      <div class="container copyright">
-      © 2018 BaseBallChart. All rights reserved.
-      </div>
-    </footer>
-    
+    @if (Auth::check())
+        {!! link_to_route('logout.get', 'ログアウト') !!}
+    @else
+        {!! link_to_route('signup.get', '新規登録', null) !!}
+        <a href="login">管理者ログイン</a>
+    @endif
     <script>
-      var barChart_c_hr = echarts.init(document.getElementById('barChart_c_hr'));
+      //ホームラン
+      var barChart = echarts.init(document.getElementById('barChart_c_hr'));
       var option = {
         title : {
           text: 'セリーグ',
@@ -211,7 +162,7 @@
         ],
         yAxis : [
             {
-                type : 'value'
+                type : 'value',
             }
         ],
         series : [
@@ -251,9 +202,9 @@
             }
         ]
     };
-      barChart_c_hr.setOption(option);
+      barChart.setOption(option);
       
-      var barChart_c_hr_sp = echarts.init(document.getElementById('barChart_c_hr_sp'));
+      var barChart = echarts.init(document.getElementById('barChart_c_hr_sp'));
       var option = {
         title : {
           text: 'セリーグ',
@@ -317,9 +268,9 @@
             },
         ]
     };
-      barChart_c_hr_sp.setOption(option);
+      barChart.setOption(option);
       
-      var barChart_p_hr = echarts.init(document.getElementById('barChart_p_hr'));
+      var barChart = echarts.init(document.getElementById('barChart_p_hr'));
       var option = {
         title : {
           text: 'パリーグ',
@@ -399,9 +350,9 @@
             }
         ]
     };
-      barChart_p_hr.setOption(option);
+      barChart.setOption(option);
       
-      var barChart_p_hr_sp = echarts.init(document.getElementById('barChart_p_hr_sp'));
+      var barChart = echarts.init(document.getElementById('barChart_p_hr_sp'));
 
       var option = {
         title : {
@@ -466,7 +417,337 @@
             },
         ]
     };
-      barChart_p_hr_sp.setOption(option);
+      barChart.setOption(option);
+      //打率
+      var barChart = echarts.init(document.getElementById('barChart_c_b_ave'));
+      var c_b_ave = ['.348', '.345', '.329', '.327', '.321']
+      var option = {
+        title : {
+          text: 'セリーグ',
+          subtext: '',
+          x:'',
+          textStyle: {
+            fontSize: 14
+          }
+        },
+        color: ['#00bcd4'],
+        tooltip : {
+          show: false,
+            trigger: 'axis',
+            axisPointer : {            
+                type : 'shadow'        
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis : [
+            {
+                type : 'category',
+                data : ['ビシエド', '坂本 勇人', '平田 良介', '青木 宣親', 'アルモンテ'],
+                axisTick: {
+                    alignWithLabel: true
+                },
+                axisLabel: {
+                  rotate: 20,
+                  fontSize: 12,
+                  fontWeight: 400,
+                }
+            },
+        ],
+        yAxis : [
+            {
+                type : 'value',
+                max: 0.4,
+                axisTick: {
+                  show: false },
+                axisLabel: {
+                  show: false } 
+            }
+        ],
+        series : [
+            {
+                name:'本塁打',
+                type:'bar',
+                barWidth: '50%',
+                data:[.348, .345, .329, .327, .321],
+                label: {
+                        normal: {
+                            show: true,
+                            textStyle: {
+                              color: '#fff',
+                          },
+                            position: 'insideTop',
+                            formatter: function(data) {
+                            return c_b_ave[data.dataIndex];
+                        },
+                        }
+                    },
+                itemStyle: {
+                  normal: {
+                      color: new echarts.graphic.LinearGradient(
+                            0, 0, 0, 1, [{
+                                    offset: 0,
+                                    color: '#52e54a'
+                                },{
+                                    offset: 0.5,
+                                    color: '#4ecc48'
+                                },{
+                                    offset: 1,
+                                    color: '#009688'
+                                }
+                            ]
+                        )//color
+                  }
+                },
+            }
+        ]
+    };
+      barChart.setOption(option);
+      
+      var barChart = echarts.init(document.getElementById('barChart_c_b_ave_sp'));
+      var c_b_ave_sp = ['.321', '.327','.329', '.345', '.348']
+      var option = {
+        title : {
+          text: 'セリーグ',
+          subtext: '',
+          x:'',
+          textStyle: {
+            fontSize: 14
+          }
+        },
+        tooltip : {
+          show: false,
+            trigger: 'axis',
+            axisPointer : {            
+                type : 'shadow'        
+            }
+        },
+        legend: {
+            data: ['']
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis:  {
+            type: 'value',
+            max: 0.4,
+            axisTick: {
+              show: false },
+            axisLabel: {
+              show: false } 
+        },
+        yAxis: {
+            type: 'category',
+            data: ['アルモンテ','青木 宣親','平田 良介','坂本 勇人', 'ビシエド' ]
+        },
+        series: [
+            {
+                name: '',
+                type: 'bar',
+                stack: '',
+                label: {
+                    normal: {
+                        show: true,
+                        textStyle: {
+                              color: '#fff',
+                          },
+                        position: 'insideRight',
+                        formatter: function(data) {
+                        return c_b_ave_sp[data.dataIndex];
+                        }
+                    }
+                },
+                itemStyle: {
+                  normal: {
+                    color: {
+                      colorStops: [{
+                          offset: 0,
+                          color: '#009688' // 0% 
+                      }, {
+                          offset: 1,
+                          color: '#52e54a' // 100% 
+                      }],
+                    }
+                  }
+                },
+                data: [.321,.327,.329,  .345, .348, ],
+            },
+        ]
+    };
+      barChart.setOption(option);
+      
+      var barChart = echarts.init(document.getElementById('barChart_p_b_ave'));
+      var p_b_ave = ['.352', '.323', '.323', '.321', '.310']
+      var option = {
+        title : {
+          text: 'パリーグ',
+          subtext: '',
+          x:'',
+          textStyle: {
+            fontSize: 14
+          }
+        },
+        color: ['#00bcd4'],
+        tooltip : {
+          show: false,
+            trigger: 'axis',
+            axisPointer : {            
+                type : 'shadow'        
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis : [
+            {
+                type : 'category',
+                data : ['柳田 悠岐', '秋山 翔吾', '近藤 健介', '吉田 正尚', '浅村 栄斗'],
+                axisTick: {
+                    alignWithLabel: true
+                },
+                axisLabel: {
+                  rotate: 20,
+                  fontSize: 12,
+                  fontWeight: 400,
+                }
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value',
+                max: 0.4,
+                axisTick: {
+                  show: false },
+                axisLabel: {
+                  show: false } 
+            }
+        ],
+        series : [
+            {
+                name:'打率',
+                type:'bar',
+                barWidth: '50%',
+                data:[.352, .323, .323, .321, .310],
+                label: {
+                        normal: {
+                          show: true,
+                          textStyle: {
+                              color: '#fff',
+                          },
+                          position: 'insideTop',
+                          formatter: function(data) {
+                            return p_b_ave[data.dataIndex];
+                          }
+                        }
+                    },
+                itemStyle: {
+                      normal: {
+                          color: new echarts.graphic.LinearGradient(
+                            0, 0, 0, 1, [{
+                                    offset: 0,
+                                    color: '#09d6d0'
+                                },
+                                {
+                                    offset: 0.5,
+                                    color: '#027eff'
+                                },
+                                {
+                                    offset: 1,
+                                    color: '#0286ff'
+                                }
+                            ]
+                        )//color
+                      }
+                },
+            }
+        ]
+    };
+      barChart.setOption(option);
+      
+      var barChart = echarts.init(document.getElementById('barChart_p_b_ave_sp'));
+      var p_b_ave_sp = ['.310', '.321',  '.323','.323','.352' ]
+      var option = {
+        title : {
+          text: 'パリーグ',
+          subtext: '',
+          x:'',
+          textStyle: {
+            fontSize: 14
+          }
+        },
+        tooltip : {
+          show: false,
+            trigger: 'axis',
+            axisPointer : {            
+                type : 'shadow'        
+            }
+        },
+        legend: {
+            data: ['']
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis:  {
+            type: 'value',
+            max: 0.4,
+            axisTick: {
+              show: false },
+            axisLabel: {
+              show: false }  
+        },
+        yAxis: {
+            type: 'category',
+            data: ['浅村 栄斗','吉田 正尚','近藤 健介','秋山 翔吾','柳田 悠岐']
+        },
+        series: [
+            {
+                name: '',
+                type: 'bar',
+                stack: '',
+                label: {
+                    normal: {
+                        show: true,
+                        textStyle: {
+                              color: '#fff',
+                          },
+                        position: 'insideRight',
+                        formatter: function(data) {
+                          return p_b_ave_sp[data.dataIndex];
+                        }
+                    }
+                },
+                itemStyle: {
+                      normal: {
+                        color: {
+                            colorStops: [{
+                              offset: 0,
+                              color: '#0286ff' // 0% 
+                            }, {
+                                offset: 1,
+                                color: '#09d6d0' // 100% 
+                            }],
+                          }
+                      }
+                },
+                data: [.310, .321, .323, .323,.352 ]
+            },
+        ]
+    };
+      barChart.setOption(option);
     
     </script> 
       

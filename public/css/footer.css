@@ -1,0 +1,97 @@
+@charset "UTF-8";
+
+/*ページトップにスクロール*/  
+#page-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+#page-top a {
+    background: #d23228;
+    opacity: 0.6;
+    text-decoration: none;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    display: block;
+    border-radius: 5px;
+}
+#page-top a:hover {
+    text-decoration: none;
+    background: #BD2D24;
+}
+
+footer {
+  padding-top: 30px;
+  padding-bottom: 20px;
+  background-color: #fdfdfd;}
+  footer ul {
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center; }
+    footer ul li {
+      font-weight: 600;
+      display: inline;
+      padding-bottom: 20px; }
+    footer ul li:after {
+      content: '　|　'; }
+    footer ul li:last-child:after {
+      content: ''; }
+    footer a {
+      color: black;
+    }
+  footer .copyright {
+    text-align: center;
+    font-size: 90%; }
+
+@media (min-width: 600px) {
+  .footer_sp {
+    display: none; } }
+@media (max-width: 600px) {
+  .footer_pc {
+    display: none; } }
+
+footer a:hover {
+  color: #56afea;  /*リンクの色設定*/
+}
+footer .footer_flex {
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-between;
+}
+footer .flex {
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+}
+footer .list_flex {
+  text-align: left;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+footer img{
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
+}
+footer .subheader {
+  font-weight: 700;
+}
+footer .c_league {
+  margin-right: 60px;
+  line-height: 200%;
+}
+footer .p_league {
+  line-height: 200%;
+}
+
+footer h4 {
+  margin-top: 1px;
+  margin-bottom: 30px;
+}
+.regulation {
+  margin-bottom: 0.5em;
+  text-align: center;
+}

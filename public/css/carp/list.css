@@ -14,6 +14,9 @@ h2 {
 h3 {
   font-size: 1.5em;
   font-weight: 700; }
+h4 {
+  font-size: 1.2em;
+  font-weight: 600; }
   
 .top{
   background-color: #fdfdfd;
@@ -32,11 +35,114 @@ header {
     display: inline;
     padding-left: 2em;
     font-weight: 600;}
-
-@media (min-width: 550px) {
+  header a {
+    color: black;
+  }
+  .label {
+    font-size: 0.8em; 
+    color: grey;
+    margin-bottom: 10px;
+  }
+  .trigger{
+    margin-top: 3px;
+  }
+  .trigger:hover{
+    cursor: pointer;
+  }
+/*セレクターここから*/  
+.slector hr {
+  margin-top: 8px;
+}
+.select {
+  margin-top: 0px;
+  padding-top: 4px;
+  display: none;
+  background-color: #fdfdfd;
+  z-index: 999;  /*重なり順。数字が大きいほど上になる*/
+  width: 30%;  /*指定しないと、なぜか幅が50%になる*/
+  position: absolute;
+  }
+  .select h6 {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    color: grey;
+  }
+  .select_close_btn {
+    color: grey;
+    margin-top: 10px;
+    margin-right: 20px;
+  }
+  .select li {
+    font-size: 1.2em;
+    margin-left: 20px;
+    margin-bottom: 30px;
+  }
+  .select li a{
+    color: black;
+  }
+  .select li a:hover{
+    color: #3988E4;  /*リンクの色設定*/
+  }
+  
+  .select hr {
+    margin-left: 30px;
+    margin-right: 30px;
+    color: lightgrey;
+  }
+  .box_close {
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+  }
+  .box {
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+  }
+  .hide {
+    display: none;
+  }
+@media (max-width: 600px){
+  .select {
+    width: 84%;
+  } }
+/*セレクターここまで*/ 
+/*spヘッダーメニューここから*/  
+.slideToggle {  
+  display: none;
+  background-color: #fdfdfd;
+  text-align: center; 
+  z-index: 999;  /*重なり順。数字が大きいほど上になる*/
+  width: 100%;  /*指定しないと、なぜか幅が50%になる*/
+  height: 100%;
+  position: fixed;
+}   
+.slideToggle a {  
+  color: black;
+}  
+.slideToggle a:hover {  
+  color: #3988E4;  /*リンクの色設定*/
+} 
+.slideToggle h4 {
+  color: grey;
+  margin-bottom: 3em;
+}
+.slideToggle h3 {
+  margin-bottom: 1.2em;
+}
+.close {
+  display: none;
+}
+.slideToggle hr {
+  margin-left: 30px;
+  margin-right: 30px;
+  color: lightgrey;
+}
+/*spヘッダーメニューここまで*/ 
+@media (min-width: 600px) {
   .menu_btn {
     display: none; } }
-@media (max-width: 550px) {
+@media (max-width: 600px) {
   .menu_btn02 {
     display: none; } }
 .list p {
@@ -46,13 +152,13 @@ header {
   .list h3 img {
     width: 5%;
     margin-right: 22px; }
-@media (max-width: 550px) {
+@media (max-width: 600px) {
   .list h3 img {
     width: 10%; } }
-@media (min-width: 550px) {
+@media (min-width: 600px) {
   .table_sp {
     display: none; } }
-@media (max-width: 550px) {
+@media (max-width: 600px) {
   .table_pc {
     display: none; } }
 .teams .carp {
@@ -101,13 +207,13 @@ img.crown_sp {
   border: solid #f1f1f1 2px;
   border-radius: 10px; }
 
-@media (max-width: 550px) {
+@media (max-width: 600px) {
   #barChart_hr {
     display: none; }
 
   .header_menu_pc {
     display: none; } }
-@media (min-width: 550px) {
+@media (min-width: 600px) {
   #barChart_hr_sp {
     display: none; }
 
@@ -140,13 +246,13 @@ table.info {
 table.stats {
   max-width: 100%; }
 
-@media (max-width: 550px) {
+@media (max-width: 600px) {
   table.info {
     display: none; }
 
   table.stats {
     display: none; } }
-@media (min-width: 550px) {
+@media (min-width: 600px) {
   .stats_rader {
     display: none; } }
 .team_name {
@@ -184,41 +290,7 @@ table.stats {
     display: inline;
     padding-left: 2em; }
 
-footer {
-  padding-top: 20px;
-  background-color: #fdfdfd;
-  border-bottom: solid red 4px; }
-  footer ul {
-    display: -webkit-flex;
-    display: flex;
-    justify-content: center; }
-    footer ul li {
-      font-weight: 600;
-      display: inline;
-      padding-bottom: 20px; }
-    footer ul li:after {
-      content: '　|　'; }
-    footer ul li:last-child:after {
-      content: ''; }
-  footer .copyright {
-    text-align: center;
-    font-size: 90%; }
-
-@media (min-width: 550px) {
-  .footer_sp {
-    display: none; } }
-@media (max-width: 550px) {
-  .footer_pc {
-    display: none; } }
-.footer_sp {
-  text-align: center;
-  font-weight: 600; }
-  .footer_sp p {
-    font-size: 1.2em;
-    padding-bottom: 1em; }
-  .footer_sp div {
-    font-size: 1.1em; }
-
+/*ヘッダーのリンクCSSここから*/
 .pointer {
   position: relative;
   display: inline-block;
@@ -238,6 +310,11 @@ footer {
     transform: scale(1, 1); }
 
 .pointer:hover {
-  cursor: pointer; }
+  cursor: pointer; 
+  color: #3988E4;  /*リンクの色設定*/;
+}
+
+/*ヘッダーのリンクCSSここまで*/
+
 
 /*# sourceMappingURL=main.css.map */

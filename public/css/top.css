@@ -59,10 +59,11 @@ header {
   text-align: center; }
 .top_page .title {
   text-align: center;
-  margin: 60px auto 40px auto; }
+  margin: 60px auto 0px auto; }
 .top_page .box {
   background-color: #fdfdfd;
-  border-radius: 10px; }
+  border-radius: 10px; 
+  margin-top: 40px; }
   @media (min-width: 550px) {
     .top_page .box .box_contents {
       display: -webkit-flex;
@@ -73,63 +74,68 @@ header {
   max-width: 100%;
   height: 300px; }
 .top_page #barChart_c_hr_sp {
-  width: 300px;
+  width: 320px;
   height: 300px; }
+@media(max-width: 320px){
+  .top_page #barChart_c_hr_sp {
+    width: 260px;
+    height: 300px; }
+} 
 .top_page #barChart_p_hr {
   max-width: 100%;
   height: 300px; }
 .top_page #barChart_p_hr_sp {
-  width: 300px;
+  width: 320px;
   height: 300px; }
+@media(max-width: 320px){
+  .top_page #barChart_p_hr_sp {
+    width: 260px;
+    height: 300px; }
+} 
+  .top_page #barChart_c_b_ave {
+  max-width: 100%;
+  height: 300px; }
+.top_page #barChart_c_b_ave_sp {
+  width: 320px;
+  height: 300px; }
+@media(max-width: 320px){
+  .top_page #barChart_c_b_ave_sp {
+    width: 260px;
+    height: 300px; }
+} 
+.top_page #barChart_p_b_ave {
+  max-width: 100%;
+  height: 300px; }
+.top_page #barChart_p_b_ave_sp {
+  width: 320px;
+  height: 300px; }
+@media(max-width: 320px){
+  .top_page #barChart_p_b_ave_sp {
+    width: 260px;
+    height: 300px; }
+  }  
 @media (max-width: 550px) {
   .top_page #barChart_c_hr {
     display: none; }
   .top_page #barChart_p_hr {
+    display: none; } 
+  .top_page #barChart_c_b_ave {
+    display: none; }
+  .top_page #barChart_p_b_ave {
     display: none; } }
 @media (min-width: 550px) {
   .top_page #barChart_c_hr_sp {
     display: none; }
   .top_page #barChart_p_hr_sp {
+    display: none; } 
+  .top_page #barChart_c_b_ave_sp {
+    display: none; }
+  .top_page #barChart_p_b_ave_sp {
     display: none; } }
 
 .data_rank {
   background-color: #fdfdfd;
   border-radius: 10px; }
-
-footer {
-  padding-top: 20px;
-  background-color: #fdfdfd;
-  border-bottom: solid red 4px; }
-  footer ul {
-    display: -webkit-flex;
-    display: flex;
-    justify-content: center; }
-    footer ul li {
-      font-weight: 600;
-      display: inline;
-      padding-bottom: 20px; }
-    footer ul li:after {
-      content: '　|　'; }
-    footer ul li:last-child:after {
-      content: ''; }
-  footer .copyright {
-    text-align: center;
-    font-size: 90%; }
-
-@media (min-width: 550px) {
-  .footer_sp {
-    display: none; } }
-@media (max-width: 550px) {
-  .footer_pc {
-    display: none; } }
-.footer_sp {
-  text-align: center;
-  font-weight: 600; }
-  .footer_sp p {
-    font-size: 1.2em;
-    padding-bottom: 1em; }
-  .footer_sp div {
-    font-size: 1.1em; }
 
 .pointer {
   position: relative;
