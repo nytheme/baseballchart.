@@ -94,6 +94,7 @@ class CarpPitchersController extends Controller
         $pitcher_stats->salary = $request->salary;
         $pitcher_stats->career = $request->career;
         $pitcher_stats->draft = $request->draft;
+        $pitcher_stats->title = $request->title;
         $pitcher_stats->team_id = $request->team_id;
         $pitcher_stats->siai_s = $request->siai_s;
         $pitcher_stats->win = $request->win;

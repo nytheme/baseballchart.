@@ -96,6 +96,7 @@ class CarpFieldersController extends Controller
         $statistic->salary = $request->salary;
         $statistic->career = $request->career;
         $statistic->draft = $request->draft;
+        $statistic->title = $request->title;
         $statistic->team_id = $request->team_id;
         $statistic->siai_s = $request->siai_s;
         $statistic->dasek_s = $request->dasek_s;

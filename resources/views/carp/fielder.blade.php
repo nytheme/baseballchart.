@@ -76,7 +76,6 @@
                 <ul>
                   <li><a class="waves-effect waves-light btn-floating btn red darken-3 tooltipped modal-trigger button" data-position="top" data-tooltip="選手情報" href="#modal1"><i class="material-icons">insert_emoticon</i></a></li>
                   <li><a class="waves-effect waves-light btn-floating btn red darken-3 tooltipped modal-trigger button" data-position="top" data-tooltip="年度別成績" href="#modal2"><i class="material-icons">equalizer</i></a></li>
-                  <li><a class="waves-effect waves-light btn-floating btn red darken-3 tooltipped modal-trigger button" data-position="top" data-tooltip="年度別年棒" href="#modal3"><i class="material-icons">attach_money</i></a></li>
                 </ul>
               </div>
             </div><!--.selector-->
@@ -142,7 +141,7 @@
             <th>経歴</th><td>{{ $statistic->career }}</td>
           </tr>
           <tr>
-            <th>タイトル</th><td></td>
+            <th>タイトル</th><td>{{ $statistic->title }}</td>
           </tr>
           </table>
         </div><!--.modal-content-->

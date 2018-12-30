@@ -15,7 +15,7 @@ class CreateStatisticsTable extends Migration
     {
         Schema::create('statistics', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('team');
+            $table->string('team');
             $table->integer('season');
             $table->integer('number');
             $table->string('name');
@@ -34,6 +34,7 @@ class CreateStatisticsTable extends Migration
             $table->integer('salary');
             $table->string('career')->nullable();
             $table->string('draft')->nullable();
+            $table->string('title')->nullable();
             $table->string('team_id');
             $table->integer('siai_s');
             $table->integer('dasek_s');

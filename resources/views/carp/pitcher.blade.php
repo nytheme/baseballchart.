@@ -76,7 +76,6 @@
                 <ul>
                   <li><a class="waves-effect waves-light btn-floating btn red darken-3 tooltipped modal-trigger button" data-position="top" data-tooltip="選手情報" href="#modal1"><i class="material-icons">insert_emoticon</i></a></li>
                   <li><a class="waves-effect waves-light btn-floating btn red darken-3 tooltipped modal-trigger button" data-position="top" data-tooltip="年度別成績" href="#modal2"><i class="material-icons">equalizer</i></a></li>
-                  <li><a class="waves-effect waves-light btn-floating btn red darken-3 tooltipped modal-trigger button" data-position="top" data-tooltip="年度別年棒" href="#modal3"><i class="material-icons">attach_money</i></a></li>
                 </ul>
               </div>
             </div><!--.selector-->
@@ -146,7 +145,7 @@
             <th>経歴</th><td>{{ $pitcher_stat->career }}</td>
           </tr>
           <tr>
-            <th>タイトル</th><td></td>
+            <th>タイトル</th><td>{{ $pitcher_stat->title }}</td>
           </tr>
           </table>
         </div><!--.modal-content-->
@@ -169,10 +168,10 @@
                   $era = sprintf("%.2f", $pitcher_stats_season->era);
               @endphp
               <tr>
-                <th>{{ $pitcher_stats_season->season }}</th><th>{{ $pitcher_stats_season->team }}</th><th>{{ $pitcher_stats_season->siai_s }}</th><th>{{ $pitcher_stats_season->win }}</th><th>{{ $pitcher_stats_season->loss }}</th><th>{{ $pitcher_stats_season->save }}</th><th>{{ $pitcher_stats_season->hold }}</th>
-                <th>{{ $pitcher_stats_season->hp }}</th><th>{{ $pitcher_stats_season->p_comp }}</th><th>{{ $pitcher_stats_season->shutout }}</th><th>{{ $pitcher_stats_season->nowalk }}</th><th>{{ $r_win }}</th><th>{{ $pitcher_stats_season->batters }}</th><th>{{ $pitcher_stats_season->inning }}</th>
-                <th>{{ $pitcher_stats_season->hit_allowed }}</th><th>{{ $pitcher_stats_season->hr_allowed }}</th><th>{{ $pitcher_stats_season->give_walk }}</th><th>{{ $pitcher_stats_season->k_en }}</th><th>{{ $pitcher_stats_season->hit_batter }}</th>
-                <th>{{ $pitcher_stats_season->strikeout }}</th><th>{{ $pitcher_stats_season->wild_pitch }}</th><th>{{ $pitcher_stats_season->balk }}</th><th>{{ $pitcher_stats_season->run_allowed }}</th><th>{{ $pitcher_stats_season->earned_run }}</th><th>{{ $era }}</th>
+                <td>{{ $pitcher_stats_season->season }}</td><td>{{ $pitcher_stats_season->team }}</td><td>{{ $pitcher_stats_season->siai_s }}</td><td>{{ $pitcher_stats_season->win }}</td><td>{{ $pitcher_stats_season->loss }}</td><td>{{ $pitcher_stats_season->save }}</td><td>{{ $pitcher_stats_season->hold }}</td>
+                <td>{{ $pitcher_stats_season->hp }}</td><td>{{ $pitcher_stats_season->p_comp }}</td><td>{{ $pitcher_stats_season->shutout }}</td><td>{{ $pitcher_stats_season->nowalk }}</td><td>{{ $r_win }}</td><td>{{ $pitcher_stats_season->batters }}</td><td>{{ $pitcher_stats_season->inning }}</td>
+                <td>{{ $pitcher_stats_season->hit_allowed }}</td><td>{{ $pitcher_stats_season->hr_allowed }}</td><td>{{ $pitcher_stats_season->give_walk }}</td><td>{{ $pitcher_stats_season->k_en }}</td><td>{{ $pitcher_stats_season->hit_batter }}</td>
+                <td>{{ $pitcher_stats_season->strikeout }}</td><td>{{ $pitcher_stats_season->wild_pitch }}</td><td>{{ $pitcher_stats_season->balk }}</td><td>{{ $pitcher_stats_season->run_allowed }}</td><td>{{ $pitcher_stats_season->earned_run }}</td><td>{{ $era }}</td>
               </tr>
               @endforeach
             </tbody>

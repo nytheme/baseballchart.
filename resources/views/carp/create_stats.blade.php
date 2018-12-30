@@ -29,6 +29,7 @@
     $salary = preg_replace('/[^0-9]/', '', $crawler->filter('.player-info > tr')->eq(4)->filter('td')->eq(1)->text());
     $career = $crawler->filter('.player-info > tr')->eq(5)->filter('td')->eq(0)->text();
     $draft = $crawler->filter('.player-info > tr')->eq(6)->filter('td')->eq(0)->text();
+    $title = $crawler->filter('.player-info > tr')->eq(7)->filter('td')->eq(0)->text();
     
     $siai_s = $crawler->filter('.stats')->eq(0)->filter('tbody' > 'tr')->eq(0)->filter('td')->eq(0)->text();
     $dasek_s = $crawler->filter('.stats')->eq(0)->filter('tbody' > 'tr')->eq(0)->filter('td')->eq(1)->text();
@@ -74,7 +75,7 @@
           {!! Form::model($statistics, ['route' => 'statistic.store']) !!}
             <div>
               {!! Form::label('チーム') !!}
-              {!! Form::select('team', ['1'=>'広島']) !!}
+              {!! Form::text('team', '広島') !!}
             </div>
             <h3 style="color: red;">年度選択を忘れずに</h3>
             <div>
@@ -149,6 +150,10 @@
             <div>
               {!! Form::label('ドラフト') !!}
               {!! Form::text('draft', $draft) !!}
+            </div>
+            <div>
+              {!! Form::label('タイトル') !!}
+              {!! Form::text('title', $title) !!}
             </div>
             <div>
               {!! Form::label('チームID') !!}

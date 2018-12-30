@@ -118,6 +118,7 @@
         {!! link_to_route('carp.create', '選手登録') !!}
         {!! link_to_route('logout.get', 'ログアウト') !!}
     @else
+        {!! link_to_route('signup.get', '新規登録', null) !!}
         <a href="login">ログイン</a>
     @endif
     <script>
