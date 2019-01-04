@@ -17,19 +17,19 @@
         </div><!--.row-->
       </div><!--.container-->
     </div><!--.top_img-->
-    
-    <div class="ranking">
+    <br>
+    <!--<div class="ranking">
     <div class="container"> 
       <div class="row">
         
-        <div class="col s12">
+        <!--<div class="col s12">
           <h3 class="title">2018年度 部門別TOP5</h3>
         </div>
         
         <div class="box col s12 m12 z-depth-1">
           <div class="inline">
             <!--<h4><img src="images/bat_icon.png" class="check"></h4>-->
-            <h4 class="h4">本塁打ランキング</h4>
+            <!--<h4 class="h4">本塁打ランキング</h4>
           </div>
           <div class="box_contents">
             <div>
@@ -46,7 +46,7 @@
         <div class="box col s12 m12 z-depth-1">
           <div class="inline">
             <!--<h4><img src="images/bat_icon.png" class="check"></h4>-->
-            <h4 class="h4">打率ランキング</h4>
+            <!--<h4 class="h4">打率ランキング</h4>
           </div>
           <div class="box_contents">
             <div>
@@ -66,8 +66,8 @@
         </div>
         
         </div><!--.row-->
-      </div><!--.container-->
-      </div><!--.ranking-->
+      <!--</div><!--.container-->
+      <!--</div><!--.ranking-->
 
   <!--<div class="tables_div z-depth-1">-->
     <div class="container data_rank z-depth-1">
@@ -114,13 +114,7 @@
         
       </div><!--.row-->
     </div><!--.container-->
-    @if (Auth::check())
-        {!! link_to_route('carp.create', '選手登録') !!}
-        {!! link_to_route('logout.get', 'ログアウト') !!}
-    @else
-        {!! link_to_route('signup.get', '新規登録', null) !!}
-        <a href="login">ログイン</a>
-    @endif
+    
     <script>
       //ホームラン
       var barChart = echarts.init(document.getElementById('barChart_c_hr'));

@@ -17,7 +17,11 @@
                 <li><span class="pointer"><a href="carp.pitchers?season=2018">投手成績</a></span></li>
                 <li><span class="pointer"><a href="carp.fielders?season=2018">打者成績</a></span></li>
                 @if (Auth::check())
-                <li>{!! link_to_route('carp.create', '選手登録') !!}</li>
+                    <li>{!! link_to_route('carp.create', '選手登録') !!}</li>
+                    <li>{!! link_to_route('logout.get', 'ログアウト') !!}</li>
+                @else
+                    {{--{!! link_to_route('signup.get', '新規登録', null) !!}--}}
+                    <li><a href="login">管理者ログイン</a></li>
                 @endif
               </ul>
             </div>

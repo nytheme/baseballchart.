@@ -91,7 +91,7 @@
       <div class="flex">
         <img src="images/bar_icon.png" style="margin-right: -6px;">
       　<h4><a href="#" data-target="slide-out" class="sidenav-trigger">球団別選手リスト</a></h4>
-      </div>　
+      </div>
       <div class="regulation"><a href="#">お問い合わせ・利用規約</a></div>
     </div>  
     <div class="container copyright">
