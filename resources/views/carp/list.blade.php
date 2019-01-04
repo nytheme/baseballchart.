@@ -114,7 +114,7 @@
             @if (count($pitcher_stats) > 0)
             <table class="pitcherTable">
               <tr><th colspan="11">投手</th></tr>
-              <tr><th>No.</th><th>Name</th><th>DOB</th><th>Age</th><th>Years</th><th>Height</th><th>Weight</th><th>Blood</th><th>P/B</th><th>Home</th><th>Salary</th></tr>
+              <tr><th>No.</th><th>Name</th><th>Birth</th><th>Age</th><th>Years</th><th>Height</th><th>Weight</th><th>Blood</th><th>P/B</th><th>Home</th><th>Salary</th></tr>
               @foreach ($pitcher_stats as $pitcher_stat)　
                   @if ($pitcher_stat->position == "先発" || $pitcher_stat->position == "リリーフ")
                       @php
@@ -139,7 +139,7 @@
             @if (count($statistics) > 0)
             <table class="inFielderTable">
               <tr><th colspan="11">内野手</th></tr>
-              <tr><th>No.</th><th>Name</th><th>DOB</th><th>Age</th><th>Years</th><th>Height</th><th>Weight</th><th>Blood</th><th>P/B</th><th>Home</th><th>Salary</th></tr>
+              <tr><th>No.</th><th>Name</th><th>Birth</th><th>Age</th><th>Years</th><th>Height</th><th>Weight</th><th>Blood</th><th>P/B</th><th>Home</th><th>Salary</th></tr>
               @foreach ($statistics as $statistic)　
                   @if ($statistic->position == "内野手")
                       @php
@@ -162,7 +162,7 @@
             </table>
             <table class="outFielderTable">
               <tr><th colspan="11">外野手</th></tr>
-              <tr><th>No.</th><th>Name</th><th>DOB</th><th>Age</th><th>Years</th><th>Height</th><th>Weight</th><th>Blood</th><th>P/B</th><th>Home</th><th>Salary</th></tr>
+              <tr><th>No.</th><th>Name</th><th>Birth</th><th>Age</th><th>Years</th><th>Height</th><th>Weight</th><th>Blood</th><th>P/B</th><th>Home</th><th>Salary</th></tr>
               @foreach ($statistics as $statistic)　
                   @if ($statistic->position == "外野手")
                       @php
@@ -185,7 +185,7 @@
             </table>
             <table class="catcherTable">
               <tr><th colspan="11">捕手</th></tr>
-              <tr><th>No.</th><th>Name</th><th>DOB</th><th>Age</th><th>Years</th><th>Height</th><th>Weight</th><th>Blood</th><th>P/B</th><th>Home</th><th>Salary</th></tr>
+              <tr><th>No.</th><th>Name</th><th>Birth</th><th>Age</th><th>Years</th><th>Height</th><th>Weight</th><th>Blood</th><th>P/B</th><th>Home</th><th>Salary</th></tr>
               @foreach ($statistics as $statistic)　
                   @if ($statistic->position == "捕手")
                       @php
@@ -215,7 +215,7 @@
           @if (count($pitcher_stats) > 0)
             <table class="pitcherTable">
               <tr><th colspan="11">投手</th></tr>
-              <tr><th>No.</th><th>Name</th><th>DOB</th><th>Age</th><th>Blood</th></tr>
+              <tr><th>No.</th><th>Name</th><th>Birth</th><th>Age</th><th>Blood</th></tr>
               @foreach ($pitcher_stats as $pitcher_stat)　
                   @if ($pitcher_stat->position == "先発" || $pitcher_stat->position == "リリーフ")
                       @php
@@ -231,7 +231,7 @@
             @if (count($statistics) > 0)
             <table class="inFielderTable">
               <tr><th colspan="11">内野手</th></tr>
-              <tr><th>No.</th><th>Name</th><th>DOB</th><th>Age</th><th>Blood</th></tr>
+              <tr><th>No.</th><th>Name</th><th>Birth</th><th>Age</th><th>Blood</th></tr>
               @foreach ($statistics as $statistic)　
                   @if ($statistic->position == "内野手")
                       @php
@@ -245,7 +245,7 @@
             </table>
             <table class="outFielderTable">
               <tr><th colspan="11">外野手</th></tr>
-              <tr><th>No.</th><th>Name</th><th>DOB</th><th>Age</th><th>Blood</th></tr>
+              <tr><th>No.</th><th>Name</th><th>Birth</th><th>Age</th><th>Blood</th></tr>
               @foreach ($statistics as $statistic)　
                   @if ($statistic->position == "外野手")
                       @php
@@ -259,7 +259,7 @@
             </table>
             <table class="catcherTable">
               <tr><th colspan="11">捕手</th></tr>
-              <tr><th>No.</th><th>Name</th><th>DOB</th><th>Age</th><th>Blood</th></tr>
+              <tr><th>No.</th><th>Name</th><th>Birth</th><th>Age</th><th>Blood</th></tr>
               @foreach ($statistics as $statistic)　
                   @if ($statistic->position == "捕手")
                       @php

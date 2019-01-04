@@ -91,7 +91,7 @@
             <h4>投手成績</h4>
             <tbody>
               <tr>
-                <th></th><th>勝利数</th><th>防御率</th><th>奪三振</th><th>制球力</th><th>QS</th>
+                <th></th><th>勝利数</th><th>防御率</th><th>奪三振</th><th>制球力</th><th class="tooltipped" data-position="top" data-tooltip="これはクオリティセーブの説明です">QS</th>
               </tr>
               <tr>
                 <th></th><th>{{ $pitcher_stat->win }}</th><th>{{ $pitcher_stat->era }}</th><th>{{ $pitcher_stat->strikeout }}</th><th>{{ round((($pitcher_stat->give_walk + $pitcher_stat->hit_batter)*9/$pitcher_stat->inning),2) }}</th><th>{{ $pitcher_stat->qs}}%</th>
