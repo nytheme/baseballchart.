@@ -23,13 +23,13 @@ class CarpFieldersController extends Controller
         
         $hrs = array_column( $hrs_values, 'hr' ); //データベースのデータを配列にする
         $hrs_ids = array_column( $hrs_ids_values, 'id' );
-        $hrs_names_space = array_column( $hrs_names_values, 'name' );
-        $hrs_names = str_replace("　", " ", $hrs_names_space); //スペースを半角に
+        $hrs_names = array_column( $hrs_names_values, 'name' );
+        //$hrs_names = str_replace("　", " ", $hrs_names_space); //スペースを半角に
         
         $b_aves = array_column( $b_aves_values, 'da_ave' ); //データベースのデータを配列にする
         $b_aves_ids = array_column( $b_aves_ids_values, 'id' );
-        $b_aves_names_space = array_column( $b_aves_names_values, 'name' );
-        $b_aves_names = str_replace("　", " ", $b_aves_names_space); 
+        $b_aves_names = array_column( $b_aves_names_values, 'name' );
+        //$b_aves_names = str_replace("　", " ", $b_aves_names_space); 
         //$first = $hrs[0] -> hr; //配列の一つだけを取り出したい場合
         
         $data = [
