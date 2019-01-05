@@ -53,7 +53,7 @@
                       <i class="material-icons trigger select_close_btn">close</i>
                     </div>
                     @foreach ($statistics_seasons as $statistics_season)
-                    <li><a href="carp.fielder?id={{ $statistics_season->id }}&name={{ $statistics_season->name }}">{{ $statistics_season->season }}</a></li>
+                    <li><a href="carp.fielder?id={{ $statistics_season->id }}&name={{ $statistic->name }}">{{ $statistics_season->season }}</a></li>
                     @endforeach
                   </ul>
                 </div>
