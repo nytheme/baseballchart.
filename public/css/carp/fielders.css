@@ -60,6 +60,7 @@ header {
   background-color: #fdfdfd;
   z-index: 999;  /*重なり順。数字が大きいほど上になる*/
   width: 30%;  /*指定しないと、なぜか幅が50%になる*/
+  height: 500px;
   position: absolute;
   }
   .select h6 {

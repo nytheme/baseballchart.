@@ -55,6 +55,7 @@
                     </div>
                     <li><a href="carp.fielders?season=2018">2018年</a></li>
                     <li><a href="carp.fielders?season=2017">2017年</a></li>
+                    <li><a href="carp.fielders?season=2016">2016年</a></li>
                   </ul>
                 </div>
                 <p class="label">Season</p><br>
