@@ -93,13 +93,13 @@
             <h4>打撃成績</h4>
             <tbody>
               <tr>
-                <th class="tooltipped" data-position="top" data-tooltip="打率：数字が大きい程、ヒットを打つ確率が高い">打率</th>
-                <th class="tooltipped" data-position="top" data-tooltip="安打(数)：ヒットの数">安打</th>
-                <th class="tooltipped" data-position="top" data-tooltip="本塁打(数)：ホームランの数">本塁打</th>
-                <th class="tooltipped" data-position="top" data-tooltip="打点：安打・犠牲打・四死球などによって自軍にもたらした得点">打点</th>
-                <th class="tooltipped" data-position="top" data-tooltip="盗塁：走者が守備側のすきをついて次の塁へ進むこと">盗塁</th>
-                <th class="tooltipped" data-position="top" data-tooltip="四球(数)：フォアボールによって出塁した数">四球</th>
-                <th class="tooltipped" data-position="top" data-tooltip="OPS：出塁率と長打率とを足し合わせた値">OPS</th>
+                <th>打率</th>
+                <th>安打</th>
+                <th>本塁打</th>
+                <th>打点</th>
+                <th>盗塁</th>
+                <th>四球</th>
+                <th>OPS</th>
               </tr>
               <tr class="tr">
                 @php
