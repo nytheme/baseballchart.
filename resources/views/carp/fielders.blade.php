@@ -107,8 +107,11 @@
           <div class="col s12 m7 barChart z-depth-1">
             <div class="flex">
               <div class="name">
+                @php
+                      $hr_names = str_replace("　", " ", $hrs_names); 
+                @endphp
                 <ul>
-                  <li><a href="carp.fielder?id={{ $hrs_ids[0] }}&name={{ $hrs_names[0] }}">{{ $hrs_names[0] }}</a></li><li><a href="carp.fielder?id={{ $hrs_ids[1] }}&name={{ $hrs_names[1] }}">{{ $hrs_names[1] }}</a></li><li><a href="carp.fielder?id={{ $hrs_ids[2] }}&name={{ $hrs_names[2] }}">{{ $hrs_names[2] }}</a></li><li><a href="carp.fielder?id={{ $hrs_ids[3] }}&name={{ $hrs_names[3] }}">{{ $hrs_names[3] }}</a></li><li><a href="carp.fielder?id={{ $hrs_ids[4] }}&name={{ $hrs_names[4] }}">{{ $hrs_names[4] }}</a></li><li><a href="carp.fielder?id={{ $hrs_ids[5] }}&name={{ $hrs_names[5] }}">{{ $hrs_names[5] }}</a></li><li><a href="carp.fielder?id={{ $hrs_ids[6] }}&name={{ $hrs_names[6] }}">{{ $hrs_names[6] }}</a></li><li><a href="carp.fielder?id={{ $hrs_ids[7] }}&name={{ $hrs_names[7] }}">{{ $hrs_names[7] }}</a></li><li><a href="carp.fielder?id={{ $hrs_ids[8] }}&name={{ $hrs_names[8] }}">{{ $hrs_names[8] }}</a></li><li><a href="carp.fielder?id={{ $hrs_ids[9] }}&name={{ $hrs_names[9] }}">{{ $hrs_names[9] }}</a></li>
+                  <li><a href="carp.fielder?id={{ $hrs_ids[0] }}&name={{ $hrs_names[0] }}">{{ $hr_names[0] }}</a></li><li><a href="carp.fielder?id={{ $hrs_ids[1] }}&name={{ $hrs_names[1] }}">{{ $hr_names[1] }}</a></li><li><a href="carp.fielder?id={{ $hrs_ids[2] }}&name={{ $hrs_names[2] }}">{{ $hr_names[2] }}</a></li><li><a href="carp.fielder?id={{ $hrs_ids[3] }}&name={{ $hrs_names[3] }}">{{ $hr_names[3] }}</a></li><li><a href="carp.fielder?id={{ $hrs_ids[4] }}&name={{ $hrs_names[4] }}">{{ $hr_names[4] }}</a></li><li><a href="carp.fielder?id={{ $hrs_ids[5] }}&name={{ $hrs_names[5] }}">{{ $hr_names[5] }}</a></li><li><a href="carp.fielder?id={{ $hrs_ids[6] }}&name={{ $hrs_names[6] }}">{{ $hr_names[6] }}</a></li><li><a href="carp.fielder?id={{ $hrs_ids[7] }}&name={{ $hrs_names[7] }}">{{ $hr_names[7] }}</a></li><li><a href="carp.fielder?id={{ $hrs_ids[8] }}&name={{ $hrs_names[8] }}">{{ $hr_names[8] }}</a></li><li><a href="carp.fielder?id={{ $hrs_ids[9] }}&name={{ $hrs_names[9] }}">{{ $hr_names[9] }}</a></li>
                 </ul>
               </div>
               <div class="chart" id="barChart_hr"></div>
@@ -135,8 +138,11 @@
           <div class="col s12 m7 barChart z-depth-1">
             <div class="flex">
               <div class="name">
+                @php
+                      $b_ave_names = str_replace("　", " ", $b_aves_names); 
+                @endphp
                 <ul>
-                  <li><a href="carp.fielder?id={{ $b_aves_ids[0] }}&name={{ $b_aves_names[0] }}">{{ $b_aves_names[0] }}</a></li><li><a href="carp.fielder?id={{ $b_aves_ids[1] }}&name={{ $b_aves_names[1] }}">{{ $b_aves_names[1] }}</a></li><li><a href="carp.fielder?id={{ $b_aves_ids[2] }}&name={{ $b_aves_names[2] }}">{{ $b_aves_names[2] }}</a></li><li><a href="carp.fielder?id={{ $b_aves_ids[3] }}&name={{ $b_aves_names[3] }}">{{ $b_aves_names[3] }}</a></li><li><a href="carp.fielder?id={{ $b_aves_ids[4] }}&name={{ $b_aves_names[4] }}">{{ $b_aves_names[4] }}</a></li><li><a href="carp.fielder?id={{ $b_aves_ids[5] }}&name={{ $b_aves_names[5] }}">{{ $b_aves_names[5] }}</a></li><li><a href="carp.fielder?id={{ $b_aves_ids[6] }}&name={{ $b_aves_names[6] }}">{{ $b_aves_names[6] }}</a></li><li><a href="carp.fielder?id={{ $b_aves_ids[7] }}&name={{ $b_aves_names[7] }}">{{ $b_aves_names[7] }}</a></li><li><a href="carp.fielder?id={{ $b_aves_ids[8] }}&name={{ $b_aves_names[8] }}">{{ $b_aves_names[8] }}</a></li><li><a href="carp.fielder?id={{ $b_aves_ids[9] }}&name={{ $b_aves_names[9] }}">{{ $b_aves_names[9] }}</a></li>
+                  <li><a href="carp.fielder?id={{ $b_aves_ids[0] }}&name={{ $b_aves_names[0] }}">{{ $b_ave_names[0] }}</a></li><li><a href="carp.fielder?id={{ $b_aves_ids[1] }}&name={{ $b_aves_names[1] }}">{{ $b_ave_names[1] }}</a></li><li><a href="carp.fielder?id={{ $b_aves_ids[2] }}&name={{ $b_aves_names[2] }}">{{ $b_ave_names[2] }}</a></li><li><a href="carp.fielder?id={{ $b_aves_ids[3] }}&name={{ $b_aves_names[3] }}">{{ $b_ave_names[3] }}</a></li><li><a href="carp.fielder?id={{ $b_aves_ids[4] }}&name={{ $b_aves_names[4] }}">{{ $b_ave_names[4] }}</a></li><li><a href="carp.fielder?id={{ $b_aves_ids[5] }}&name={{ $b_aves_names[5] }}">{{ $b_ave_names[5] }}</a></li><li><a href="carp.fielder?id={{ $b_aves_ids[6] }}&name={{ $b_aves_names[6] }}">{{ $b_ave_names[6] }}</a></li><li><a href="carp.fielder?id={{ $b_aves_ids[7] }}&name={{ $b_aves_names[7] }}">{{ $b_ave_names[7] }}</a></li><li><a href="carp.fielder?id={{ $b_aves_ids[8] }}&name={{ $b_aves_names[8] }}">{{ $b_ave_names[8] }}</a></li><li><a href="carp.fielder?id={{ $b_aves_ids[9] }}&name={{ $b_aves_names[9] }}">{{ $b_ave_names[9] }}</a></li>
                 </ul>
               </div>
               <div class="chart" id="barChart_b_ave"></div>

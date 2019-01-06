@@ -41,8 +41,11 @@
         <div class="row">
           <div class="list">
             @foreach ($pitcher_stats as $pitcher_stat)
+                @php
+                      $name = str_replace("　", " ", $pitcher_stat->name ); 
+                @endphp
             <div class="col s12">
-              <h3><img src="images/carp_logo.png">{{ $pitcher_stat->name }}</h3>
+              <h3><img src="images/carp_logo.png">{{ $name }}</h3>
             </div>
             <div class="col s12 m6 selector">
                 <!-- Dropdown Structure -->

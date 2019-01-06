@@ -24,13 +24,13 @@ class CarpPitchersController extends Controller
         
         $strikeouts = array_column( $strikeouts_values, 'strikeout' ); //データベースのデータを配列にする
         $strikeouts_ids = array_column( $strikeouts_ids_values, 'id' ); 
-        $strikeouts_names_space = array_column( $strikeouts_names_values, 'name' );
-        $strikeouts_names = str_replace("　", " ", $strikeouts_names_space); //スペースを半角に
+        $strikeouts_names = array_column( $strikeouts_names_values, 'name' );
+        //$strikeouts_names = str_replace("　", " ", $strikeouts_names_space); //スペースを半角に
         
         $eras = array_column( $eras_values, 'era' );
         $eras_ids = array_column( $eras_ids_values, 'id' );
-        $eras_names_space = array_column( $eras_names_values, 'name' );
-        $eras_names = str_replace("　", " ", $eras_names_space);
+        $eras_names = array_column( $eras_names_values, 'name' );
+        //$eras_names = str_replace("　", " ", $eras_names_space);
         
         $data = [
             'strikeouts' => $strikeouts,
